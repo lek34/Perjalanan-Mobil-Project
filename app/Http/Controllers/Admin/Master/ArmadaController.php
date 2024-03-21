@@ -27,9 +27,11 @@ class ArmadaController extends Controller
     public function create()
     {
         //
+
         $master_acc = 'here show';
         $armada_menu = 'active';
         return view('admin.master.armada.create',compact('master_acc','armada_menu'));
+
     }
 
     /**
