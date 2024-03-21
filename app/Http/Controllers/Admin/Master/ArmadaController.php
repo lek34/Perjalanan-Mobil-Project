@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 use App\Models\Armada;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Master\Armada\CreateArmadaRequest;
 
 class ArmadaController extends Controller
 {
@@ -14,8 +15,10 @@ class ArmadaController extends Controller
     public function index()
     {
         //
-        $armadas = Armada::all();
-        return view('admin.master.armada.index',compact('armadas'));
+        $armadas = Armada::withTrashed()->get();
+        $master_acc = 'here show';
+        $armada_menu = 'active';
+        return view('admin.master.armada.index',compact('armadas','master_acc','armada_menu'));
     }
 
     /**
@@ -24,15 +27,22 @@ class ArmadaController extends Controller
     public function create()
     {
         //
-        return view('admin.master.armada.create');
+
+        $master_acc = 'here show';
+        $armada_menu = 'active';
+        return view('admin.master.armada.create',compact('master_acc','armada_menu'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateArmadaRequest $request)
     {
         //
+        $armada = $request->validated();
+        Armada::insert($armada);
+        return redirect()->route('admin.master.armada.index');
     }
 
     /**
@@ -41,6 +51,10 @@ class ArmadaController extends Controller
     public function show(string $id)
     {
         //
+        $master_acc = 'here show';
+        $armada_menu = 'active';
+        $armada = Armada::findOrFail($id);
+        return view('admin.master.armada.show', compact('master_acc','armada_menu','armada'));
     }
 
     /**
@@ -49,6 +63,10 @@ class ArmadaController extends Controller
     public function edit(string $id)
     {
         //
+        $master_acc = 'here show';
+        $armada_menu = 'active';
+        $armada = Armada::findOrFail($id);
+        return view('admin.master.armada.edit', compact('master_acc','armada_menu','armada'));
     }
 
     /**
@@ -57,6 +75,9 @@ class ArmadaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $armada = $request->validated();
+        Armada::findOrFail($id)->update($armada);
+        return redirect()->route('admin.master.armada.index');
     }
 
     /**
@@ -65,5 +86,7 @@ class ArmadaController extends Controller
     public function destroy(string $id)
     {
         //
+        $armada = Armada::findOrFail($id)->delete();
+        return redirect()->route('admin.master.barang.index');
     }
 }
