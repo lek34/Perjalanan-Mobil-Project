@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use App\Http\Controllers\Controller;
+use App\Models\Armada;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArmadaController extends Controller
 {
@@ -13,6 +14,8 @@ class ArmadaController extends Controller
     public function index()
     {
         //
+        $armadas = Armada::all();
+        return view('admin.master.armada.index',compact('armadas'));
     }
 
     /**

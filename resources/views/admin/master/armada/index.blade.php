@@ -11,7 +11,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Barang</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Armada</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -84,8 +84,8 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.master.barang.create') }}" class="btn btn-primary">Add
-                            Barang</a>
+                        <a href="{{ route('admin.master.armada.create') }}" class="btn btn-primary">Add
+                            Armada</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->
@@ -110,17 +110,17 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            @foreach ($barangs as $barang)
+                            @foreach ($armadas as $armada)
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $barang->nama }}
+                                        {{ $armada->nama }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
-                                        @if (is_null($barang->deleted_at))
+                                        @if (is_null($armada->deleted_at))
                                             <div class="badge badge-light-success">Unlock</div>
                                         @else
                                             <div class="badge badge-light-danger">Lock</div>
