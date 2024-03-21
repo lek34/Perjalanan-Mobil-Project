@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Master\Armada;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateArmadaRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class CreateArmadaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -23,6 +24,22 @@ class CreateArmadaRequest extends FormRequest
     {
         return [
             //
+            'nopol' => 'required|unique:armadas,nopol|max:100',
+            'namapemilik' => 'required|max:100',
+            'merk' => 'required|max:150',
+            'tipe' => 'required|max:150',
+            'nomesin' => 'required|max:150',
+            'norangka' => 'required|max:150',
+            'tahunproduksi' => 'required|max:150',
+            'gol' => 'required|max:150',
+            'karoseri' => 'required|max:150',
+            'bbm' => 'required|max:150',
+            'inv' => 'required|max:150',
+            'ops' => 'required|max:150',
+            'lastkir' => 'required|max:150',
+            'futurekir' => 'required|max:150',
+            'laststnk' => 'required|max:150',
+            'futurestnk' => 'required|max:150'
         ];
     }
 }
