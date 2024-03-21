@@ -116,7 +116,7 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $armada->nama }}
+                                        {{ $armada->namapemilik }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
@@ -147,25 +147,25 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <!--begin::Badges-->
-                                            @if (is_null($barang->deleted_at))
+                                            @if (is_null($armada->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.barang.show', $barang->id) }}"
+                                                    <a href="{{ route('admin.master.armada.show', $armada->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.barang.edit', $barang->id) }}"
+                                                    <a href="{{ route('admin.master.armada.edit', $armada->id) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <div class="menu-item px-3">
                                                     <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#delete{{ $barang->id }}"
+                                                        data-bs-target="#delete{{ $armada->id }}"
                                                         class="btn btn-danger btn-sm delete">
                                                         <i class="fas fa-trash"></i>Delete
                                                     </button>
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.barang.show', $barang->id) }}"
+                                                    <a href="{{ route('admin.master.armada.show', $armada->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                             @endif
@@ -175,7 +175,7 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$barang->id" :route="route('admin.master.barang.delete', $barang->id)" :model="$barang" :modelAttribute="'nama'" />
+                                <x-confirm-delete :id="$armada->id" :route="route('admin.master.armada.delete', $armada->id)" :model="$armada" :modelAttribute="'nopol'" />
                             @endforeach
                         </tbody>
                         <!--end::Table body-->

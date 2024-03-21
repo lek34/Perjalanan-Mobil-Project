@@ -44,7 +44,7 @@
                 <div class="card-body pt-5">
                     <!--begin::Form-->
                     <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                        action="{{ route('admin.master.armada.store') }}" enctype="multipart/form-data">
+                        action="{{ route('admin.master.armada.store') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Input group-->
                         <div class="fv-row mb-7 fv-plugins-icon-container">
@@ -171,7 +171,7 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
                                         <div class="input-group date">
-                                            
+
                                             <input type="date" class="form-control" placeholder="Select date" name="futurekir">
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                             <input type="date" class="form-control" placeholder="Select date" name="laststnk">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
                                         <div class="input-group date">
@@ -231,5 +231,5 @@
         <!--end::Container-->
     </div>
     <!--end::Post-->
-    
+
 @endsection

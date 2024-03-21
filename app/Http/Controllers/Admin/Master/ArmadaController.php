@@ -40,8 +40,8 @@ class ArmadaController extends Controller
     public function store(CreateArmadaRequest $request)
     {
         //
-        $armada = $request->validated();
-        Armada::insert($armada);
+        $armadas = $request->validated();
+        Armada::insert($armadas);
         return redirect()->route('admin.master.armada.index');
     }
 
