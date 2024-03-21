@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('armadas', function (Blueprint $table) {
             $table->id();
+            $table->string('nopol');
+            $table->string('namapemilik');
+            $table->string('merk');
+            $table->string('tipe');
+            $table->string('nomesin');
+            $table->string('norangka');
+            $table->string('tahunproduksi');
+            $table->string('gol');
+            $table->string('karoseri');
+            $table->string('bbm');
+            $table->string('inv');
+            $table->string('ops');
+            $table->date('lastkir');
+            $table->date('futurekir');
+            $table->date('laststnk');
+            $table->date('futurestnk');
             $table->timestamps();
         });
     }
