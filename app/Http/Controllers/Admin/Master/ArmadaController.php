@@ -24,6 +24,7 @@ class ArmadaController extends Controller
     public function create()
     {
         //
+        return view('admin.master.armada.create');
     }
 
     /**
