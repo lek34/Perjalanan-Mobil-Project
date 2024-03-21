@@ -84,7 +84,7 @@ class ArmadaController extends Controller
     public function destroy(string $id)
     {
         //
-        $barang = Armada::findOrFail($id)->delete();
+        $armada = Armada::findOrFail($id)->delete();
         return redirect()->route('admin.master.barang.index');
     }
 }
