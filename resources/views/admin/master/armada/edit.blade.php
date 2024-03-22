@@ -66,7 +66,7 @@
                                     <x-forms.input-error name="nopol" />
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="fs-6 fw-bold form-label mt-3" >Categories</label>
+                                    <label class="fs-6 fw-bold form-label mt-3"> <span class="required">Merk</span></label>
                                     <select class="form-select mb-2" data-control="select2" data-hide-search="true"
                                         data-placeholder="Select an option" name="merk" required>
                                         <option disabled selected>--Pilih Merk--</option>

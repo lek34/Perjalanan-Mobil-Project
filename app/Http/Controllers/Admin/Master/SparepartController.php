@@ -16,10 +16,10 @@ class SparepartController extends Controller
     public function index()
     {
         //
-        $sparepart = Sparepart::withTrashed()->get();
+        $spareparts = Sparepart::withTrashed()->get();
         $master_acc = 'here show';
         $sparepart_menu = 'active';
-        return view('admin.master.sparepart.index',compact('armadas','master_acc','sparepart_menu'));
+        return view('admin.master.sparepart.index',compact('spareparts','master_acc','sparepart_menu'));
     }
 
     /**
@@ -87,5 +87,14 @@ class SparepartController extends Controller
         //
         $sparepart = Sparepart::findOrFail($id)->delete();
         return redirect()->route('admin.master.sparepart.index');
+    }
+
+    public function restore(string $id)
+    {
+        //
+        $sparepart = Sparepart::withTrashed()->find($id);
+        $sparepart->restore();
+        return redirect()->route('admin.master.sparepart.index');
+
     }
 }

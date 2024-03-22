@@ -60,12 +60,12 @@
                                 <div class="col-md-4">
                                     <!-- Input 3 -->
                                     <x-forms.input id="nopol" label="Nomor Polisi" :required="'required'" name="nopol"
-                                        type="text" :placeholder="'Masukkan nama pemilik...'" :func="''" :isiFunc="''"
+                                        type="text" :placeholder="'Masukkan nopol...'" :func="''" :isiFunc="''"
                                         :value=" old('nopol') !== null ? old('nopol') : '' " />
                                     <x-forms.input-error name="nopol" />
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="fs-6 fw-bold form-label mt-3">Categories</label>
+                                    <label class="fs-6 fw-bold form-label mt-3"> <span class="required">Merk</span></label>
                                     <select class="form-select mb-2" data-control="select2" data-hide-search="true"
                                         data-placeholder="Select an option" name="merk" required>
                                         <option disabled selected>--Pilih Merk--</option>
@@ -92,21 +92,21 @@
                                 <div class="col-md-4">
                                     <!-- Input 4 -->
                                     <x-forms.input id="nomesin" label="Nomor Mesin" :required="'required'" name="nomesin"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan no mesin..." :func="''" :isiFunc="''"
                                         :value=" old('nomesin') !== null ? old('nomesin') : '' " />
                                     <x-forms.input-error name="nomesin" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 5 -->
                                     <x-forms.input id="norangka" label="Nomor Rangka" :required="'required'" name="norangka"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan no rangka..." :func="''" :isiFunc="''"
                                         :value=" old('norangka') !== null ? old('norangka') : '' " />
                                     <x-forms.input-error name="norangka" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 7 -->
                                     <x-forms.input id="bbm" label="BBM" :required="'required'" name="bbm"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan bbm..." :func="''" :isiFunc="''"
                                         :value="old('bbm') !== null ? old('bbm') : ''" />
                                     <x-forms.input-error name="bbm" />
                                 </div>
@@ -118,21 +118,21 @@
                                 <div class="col-md-4">
                                     <!-- Input 7 -->
                                     <x-forms.input id="tahunproduksi" label="Tahun Produksi" :required="'required'"
-                                        name="tahunproduksi" type="text" placeholder="Masukkan nama..." :func="''"
+                                        name="tahunproduksi" type="text" placeholder="Masukkan tahun produksi..." :func="''"
                                         :isiFunc="''" :value="old('tahunproduksi') !== null ? old('tahunproduksi') : ''" />
                                     <x-forms.input-error name="tahunproduksi" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="gol" label="Golongan" :required="'required'" name="gol"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan gol..." :func="''" :isiFunc="''"
                                         :value=" old('gol') !== null ? old('gol') : '' " />
                                     <x-forms.input-error name="gol" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 5 -->
                                     <x-forms.input id="tipe" label="Nomor Rangka" :required="'required'" name="tipe"
-                                        type="text" placeholder="Masukkan Tipe..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan rangka..." :func="''" :isiFunc="''"
                                         :value=" old('tipe') !== null ? old('tipe') : '' " />
                                     <x-forms.input-error name="tipe" />
                                 </div>
@@ -148,7 +148,7 @@
                                 <div class="col-md-4">
                                     <!-- Input 6 -->
                                     <x-forms.input id="karoseri" label="Karoseri" :required="'required'" name="karoseri"
-                                        type="text" placeholder="Masukkan nama pemilik..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan karoseri..." :func="''" :isiFunc="''"
                                         :value=" old('karoseri') !== null ? old('karoseri') : '' " />
                                     <x-forms.input-error name="karoseri" />
                                 </div>
@@ -156,14 +156,14 @@
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="inv" label="Inventaris" :required="'required'" name="inv"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan inventaris..." :func="''" :isiFunc="''"
                                         :value=" old('inv') !== null ? old('inv') : '' " />
                                     <x-forms.input-error name="inv" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="ops" label="Operasional" :required="'required'" name="ops"
-                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        type="text" placeholder="Masukkan operasional..." :func="''" :isiFunc="''"
                                         :value=" old('ops') !== null ? old('ops') : '' " />
                                     <x-forms.input-error name="ops" />
 
@@ -174,7 +174,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group mb-4">
-                                            <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
+                                            <label class="fs-6 fw-bold form-label mt-3"><span class="required">Mulai KIR</span></label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value="{{ old('lastkir') }}" placeholder="Select date" name="lastkir">
                                             </div>
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-4">
-                                            <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
+                                            <label class="fs-6 fw-bold form-label mt-3"><span class="required">Akhir KIR</span></label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value="{{ old('futurekir') }}" placeholder="Select date" name="futurekir">
                                             </div>
@@ -194,7 +194,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group mb-4">
-                                            <label class="fs-6 fw-bold form-label mt-3">MULAI STNK</label>
+                                            <label class="fs-6 fw-bold form-label mt-3"><span class="required">Mulai STNK</span></label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value="{{ old('laststnk') }}" placeholder="Select date" name="laststnk">
                                             </div>
@@ -204,7 +204,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group mb-4">
-                                            <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
+                                            <label class="fs-6 fw-bold form-label mt-3"><span class="required">Akhir STNK</span></label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value="{{ old('futurestnk') }}" placeholder="Select date" name="futurestnk">
                                             </div>

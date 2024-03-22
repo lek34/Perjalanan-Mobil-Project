@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Master\Spareparts;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateSparepartRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateSparepartRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
