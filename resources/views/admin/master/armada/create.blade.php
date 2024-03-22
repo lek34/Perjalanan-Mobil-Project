@@ -67,22 +67,24 @@
                                 <div class="col-md-4">
                                     <label class="fs-6 fw-bold form-label mt-3">Categories</label>
                                     <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                        data-placeholder="Select an option" name="merk">
-                                        <option></option>
-                                        <option value="MITSUBISHI" selected="selected">MITSUBISHI</option>
-                                        <option value="SUZUKI">SUZUKI</option>
-                                        <option value="ISUZU">ISUZU</option>
-                                        <option value="TOYOTA">TOYOTA</option>
-                                        <option value="KIA">KIA</option>
-                                        <option value="DAIHATSU">DAIHATSU</option>
-                                        <option value="HONDA">HONDAd</option>
-                                        <option value="FORD">FORD</option>
-                                        <option value="LANDROVER" >LANDROVER</option>
-                                        <option value="WRANGLER">WRANGLER</option>
-                                        <option value="MERCEDES">MERCEDES</option>
-                                        <option value="HINO">HINO</option>
+                                        data-placeholder="Select an option" name="merk" required>
+                                        <option disabled selected>--Pilih Merk--</option>
+                                        <option value="MITSUBISHI" {{old('merk') == "MITSUBISHI" ? 'selected' : ''}} >MITSUBISHI</option>
+                                        <option value="SUZUKI" {{old('merk') == "SUZUKI" ? 'selected' : ''}}>SUZUKI</option>
+                                        <option value="ISUZU" {{old('merk') == "ISUZU" ? 'selected' : ''}}>ISUZU</option>
+                                        <option value="TOYOTA" {{old('merk') == "TOYOTA" ? 'selected' : ''}}>TOYOTA</option>
+                                        <option value="KIA" {{old('merk') == "KIA" ? 'selected' : ''}}>KIA</option>
+                                        <option value="DAIHATSU" {{old('merk') == "DAIHATSU" ? 'selected' : ''}} >DAIHATSU</option>
+                                        <option value="HONDA" {{old('merk') == "HONDA" ? 'selected' : ''}}>HONDA</option>
+                                        <option value="FORD" {{old('merk') == "FORD" ? 'selected' : ''}}>FORD</option>
+                                        <option value="LANDROVER" {{old('merk') == "LANDROVER" ? 'selected' : ''}}>LANDROVER</option>
+                                        <option value="WRANGLER"{{old('merk') == "WRANGLER" ? 'selected' : ''}}>WRANGLER</option>
+                                        <option value="MERCEDES" {{old('merk') == "MERCEDES" ? 'selected' : ''}}>MERCEDES</option>
+                                        <option value="HINO" {{old('merk') == "HINO" ? 'selected' : ''}}>HINO</option>
                                     </select>
+                                    <x-forms.input-error name="merk" />
                                 </div>
+
                             </div>
                             <!-- Row 2 -->
                             <div class="row">
@@ -171,35 +173,43 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{ old('lastkir') }}" placeholder="Select date" name="lastkir">
-                                            <x-forms.input-error name="lastkir" />
+                                        <div class="form-group mb-4">
+                                            <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value="{{ old('lastkir') }}" placeholder="Select date" name="lastkir">
+                                            </div>
                                         </div>
+                                        <x-forms.input-error name="lastkir" />
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{ old('futurekir') }}" placeholder="Select date" name="futurekir">
-                                            <x-forms.input-error name="futurekir" />
+                                        <div class="form-group mb-4">
+                                            <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value="{{ old('futurekir') }}" placeholder="Select date" name="futurekir">
+                                            </div>
                                         </div>
+                                        <x-forms.input-error name="futurekir" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="fs-6 fw-bold form-label mt-3">MULAI STNK</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{ old('laststnk') }}" placeholder="Select date" name="laststnk">
-                                            <x-forms.input-error name="laststnk" />
+                                        <div class="form-group mb-4">
+                                            <label class="fs-6 fw-bold form-label mt-3">MULAI STNK</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value="{{ old('laststnk') }}" placeholder="Select date" name="laststnk">
+                                            </div>
                                         </div>
+                                        <x-forms.input-error name="laststnk" />
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{ old('futurestnk') }}" placeholder="Select date" name="futurestnk">
-                                            <x-forms.input-error name="futurestnk" />
+                                        <div class="form-group mb-4">
+                                            <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value="{{ old('futurestnk') }}" placeholder="Select date" name="futurestnk">
+                                            </div>
                                         </div>
+                                        <x-forms.input-error name="futurestnk" />
                                     </div>
                                 </div>
                             </div>
