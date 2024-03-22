@@ -99,7 +99,7 @@
                                     <x-forms.input id="norangka" label="Nomor Rangka" :required="'required'" name="norangka"
                                         type="text" placeholder="Masukkan No Rangka..." :func="''" :isiFunc="''"
                                         value=" {{old('norangka') ?? $armada->norangka }} " />
-                                  
+
                                     <x-forms.input-error name="norangka" />
                                 </div>
                                 <div class="col-md-4">
@@ -175,14 +175,17 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
                                         <div class="input-group date">
-                                            <input type="date" class="form-control" value=" 2024-03-21" placeholder="Select date" name="lastkir">
+                                            <input type="date" class="form-control" value="{{old('futurekir') ??
+                                            \Carbon\Carbon::parse($armada->futurekir)->format('Y-m-d') }}"
                                             <x-forms.input-error name="lastkir" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
                                         <div class="input-group date">
-                                            <input type="date" class="form-control" value=" {{old('futurekir') ?? $armada->futurekir }} " placeholder="Select date" name="futurekir">
+
+                                            <input type="date" class="form-control" value="{{old('futurekir') ??
+                                            \Carbon\Carbon::parse($armada->futurekir)->format('Y-m-d') }}" placeholder="Select date" name="futurekir"/>
                                             <x-forms.input-error name="futurekir" />
                                         </div>
                                     </div>
