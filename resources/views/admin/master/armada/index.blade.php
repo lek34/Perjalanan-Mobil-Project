@@ -100,7 +100,12 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-100px">No</th>
-                                <th class="min-w-125px">Nama Barang</th>
+                                <th class="min-w-125px">Nama Pemilik</th>
+                                <th class="min-w-125px">Nopol</th>
+                                <th class="min-w-125px">KIR Awal</th>
+                                <th class="min-w-125px">KIR Akhir</th>
+                                <th class="min-w-125px">STNK Awal</th>
+                                <th class="min-w-125px">STNK Akhir</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
                             </tr>
@@ -117,6 +122,21 @@
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         {{ $armada->namapemilik }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ $armada->nopol }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ \Carbon\Carbon::parse($armada->lastkir)->format('d-m-Y') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ \Carbon\Carbon::parse($armada->futurekir)->format('d-m-Y') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ \Carbon\Carbon::parse($armada->laststnk)->format('d-m-Y') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ \Carbon\Carbon::parse($armada->futurestnk)->format('d-m-Y') }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
