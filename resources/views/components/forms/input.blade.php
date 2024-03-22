@@ -4,5 +4,5 @@
     </label>
 
     <input type="{{ $type }}" class="form-control form-control-solid" name="{{ $name }}"
-        id="{{$id}}" value="{{ old($value) ? old($value) : $value }}" {{$func}}="{{$isiFunc}}" placeholder="{{ $placeholder }}" />
+        id="{{$id}}" value="{{ old($value) ??  $value }}" {{$func}}="{{$isiFunc}}" placeholder="{{ $placeholder }}" />
 </div>

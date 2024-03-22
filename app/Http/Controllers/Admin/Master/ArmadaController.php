@@ -6,6 +6,7 @@ use App\Models\Armada;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Master\Armada\CreateArmadaRequest;
+use App\Http\Requests\Admin\Master\Armada\UpdateArmadaRequest;
 
 class ArmadaController extends Controller
 {
@@ -67,12 +68,13 @@ class ArmadaController extends Controller
         $armada_menu = 'active';
         $armada = Armada::findOrFail($id);
         return view('admin.master.armada.edit', compact('master_acc','armada_menu','armada'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateArmadaRequest $request, string $id)
     {
         //
         $armada = $request->validated();
@@ -87,6 +89,15 @@ class ArmadaController extends Controller
     {
         //
         $armada = Armada::findOrFail($id)->delete();
-        return redirect()->route('admin.master.barang.index');
+        return redirect()->route('admin.master.armada.index');
+    }
+
+    public function restore(string $id)
+    {
+        //
+        $armada = Armada::withTrashed()->find($id);
+        $armada->restore();
+        return redirect()->route('admin.master.armada.index');
+
     }
 }

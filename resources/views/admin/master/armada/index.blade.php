@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 
-@section('title', 'Barang')
+@section('title', 'Armada')
 @section('content')
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
@@ -167,6 +167,10 @@
                                                 <div class="menu-item px-3">
                                                     <a href="{{ route('admin.master.armada.show', $armada->id) }}"
                                                         class="menu-link px-3">Show</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.master.armada.restore', $armada->id) }}"
+                                                        class="menu-link px-3">Restore</a>
                                                 </div>
                                             @endif
                                             <!--end::Menu item-->
