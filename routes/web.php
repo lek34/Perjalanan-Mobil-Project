@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(ArmadaController::class)->prefix('admin/master/armada')->name('admin.master.armada.')->group(function(){
+Route::controller(ArmadaController::class)->middleware('auth')->prefix('admin/master/armada')->name('admin.master.armada.')->group(function(){
     Route::get('/index', 'index')->name('index');
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
@@ -26,6 +26,7 @@ Route::controller(ArmadaController::class)->prefix('admin/master/armada')->name(
     Route::get('/edit/{id}','edit')->name('edit');
     Route::put('/update/{id}','update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
 });
 
 
