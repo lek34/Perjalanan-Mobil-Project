@@ -44,13 +44,13 @@
                 <div class="card-body pt-5">
                     <!--begin::Form-->
                     <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                        action="{{ route('admin.master.armada.store') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+                        action="{{ route('admin.master.armada.store') }}" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Input group-->
                         <div class="fv-row mb-7 fv-plugins-icon-container">
                             <!-- Row 1 -->
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <!-- Input 1 -->
                                     <x-forms.input id="namapemilik" label="Nama Pemilik" :required="'required'" :name="'namapemilik'"
                                         :type="'text'" :placeholder="'Masukkan nama pemilik...'" :func="''" :isiFunc="''"
@@ -64,6 +64,25 @@
                                         :value="''" />
                                     <x-forms.input-error name="nopol" />
                                 </div>
+                                <div class="col-md-4">
+                                    <label class="fs-6 fw-bold form-label mt-3">Categories</label>
+                                    <select class="form-select mb-2" data-control="select2" data-hide-search="true"
+                                        data-placeholder="Select an option" name="merk">
+                                        <option></option>
+                                        <option value="MITSUBISHI" selected="selected">MITSUBISHI</option>
+                                        <option value="SUZUKI">SUZUKI</option>
+                                        <option value="ISUZU">ISUZU</option>
+                                        <option value="TOYOTA">TOYOTA</option>
+                                        <option value="KIA">KIA</option>
+                                        <option value="DAIHATSU">DAIHATSU</option>
+                                        <option value="HONDA">HONDAd</option>
+                                        <option value="FORD">FORD</option>
+                                        <option value="LANDROVER" >LANDROVER</option>
+                                        <option value="WRANGLER">WRANGLER</option>
+                                        <option value="MERCEDES">MERCEDES</option>
+                                        <option value="HINO">HINO</option>
+                                    </select>
+                                </div> 
                             </div>
                             <!-- Row 2 -->
                             <div class="row">
@@ -92,25 +111,7 @@
                             </div>
                             <!-- Row 3 -->
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="fs-6 fw-bold form-label mt-3">Categories</label>
-                                    <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                        data-placeholder="Select an option" name="merk">
-                                        <option></option>
-                                        <option value="MITSUBISHI" selected="selected">MITSUBISHI</option>
-                                        <option value="SUZUKI">SUZUKI</option>
-                                        <option value="ISUZU">ISUZU</option>
-                                        <option value="TOYOTA">TOYOTA</option>
-                                        <option value="KIA" ">KIA</option>
-                                        <option value="DAIHATSU">DAIHATSU</option>
-                                        <option value="HONDA">HONDAd</option>
-                                        <option value="FORD">FORD</option>
-                                        <option value="LANDROVER" >LANDROVER</option>
-                                        <option value="WRANGLER">WRANGLER</option>
-                                        <option value="MERCEDES">MERCEDES</option>
-                                        <option value="HINO">HINO</option>
-                                    </select>
-                                </div>
+                                
 
                                 <div class="col-md-4">
                                     <!-- Input 7 -->
@@ -125,6 +126,13 @@
                                         :type="'text'" :placeholder="'Masukkan nama...'" :func="''" :isiFunc="''"
                                         :value="''" />
                                     <x-forms.input-error name="gol" />
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- Input 5 -->
+                                    <x-forms.input id="nama" label="Nomor Rangka" :required="'required'" :name="'tipe'"
+                                        :type="'text'" :placeholder="'Masukkan Tipe...'" :func="''" :isiFunc="''"
+                                        :value="''" />
+                                    <x-forms.input-error name="norangka" />
                                 </div>
                             </div>
                             <div class="row">
@@ -171,7 +179,7 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
                                         <div class="input-group date">
-
+                                            
                                             <input type="date" class="form-control" placeholder="Select date" name="futurekir">
                                         </div>
                                     </div>
@@ -183,7 +191,7 @@
                                             <input type="date" class="form-control" placeholder="Select date" name="laststnk">
                                         </div>
                                     </div>
-
+                                    
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
                                         <div class="input-group date">
@@ -231,5 +239,5 @@
         <!--end::Container-->
     </div>
     <!--end::Post-->
-
+    
 @endsection

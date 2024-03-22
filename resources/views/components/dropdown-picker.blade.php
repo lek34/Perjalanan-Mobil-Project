@@ -1,5 +1,5 @@
 <div>
-    <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select">
+    <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" >
         <option></option>
         <option value="published" selected="selected">Published</option>
         <option value="draft">Draft</option>
