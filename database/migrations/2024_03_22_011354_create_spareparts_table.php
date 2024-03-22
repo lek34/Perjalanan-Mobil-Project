@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('partnumber');
             $table->string('alias');
             $table->bigInteger('qty');
-            $table->uom('uom');
+            $table->string('uom');
             $table->timestamps();
             $table->softDeletes();
         });

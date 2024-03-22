@@ -66,24 +66,23 @@
                                     <x-forms.input-error name="nopol" />
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="fs-6 fw-bold form-label mt-3" >Categories</label>
+                                    <label class="fs-6 fw-bold form-label mt-3">Categories</label>
                                     <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                        data-placeholder="Select an option" name="merk" required>
-                                        <option disabled selected>--Pilih Merk--</option>
-                                        <option value="MITSUBISHI" {{$armada->merk == "MITSUBISHI" ? 'selected' : ''}} >MITSUBISHI</option>
-                                        <option value="SUZUKI" {{$armada->merk == "SUZUKI" ? 'selected' : ''}}>SUZUKI</option>
-                                        <option value="ISUZU" {{$armada->merk == "ISUZU" ? 'selected' : ''}}>ISUZU</option>
-                                        <option value="TOYOTA" {{$armada->merk == "TOYOTA" ? 'selected' : ''}}>TOYOTA</option>
-                                        <option value="KIA" {{$armada->merk == "KIA" ? 'selected' : ''}}>KIA</option>
-                                        <option value="DAIHATSU" {{$armada->merk == "DAIHATSU" ? 'selected' : ''}} >DAIHATSU</option>
-                                        <option value="HONDA" {{$armada->merk == "HONDA" ? 'selected' : ''}}>HONDA</option>
-                                        <option value="FORD" {{$armada->merk == "FORD" ? 'selected' : ''}}>FORD</option>
-                                        <option value="LANDROVER" {{$armada->merk == "LANDROVER" ? 'selected' : ''}}>LANDROVER</option>
-                                        <option value="WRANGLER"{{$armada->merk == "WRANGLER" ? 'selected' : ''}}>WRANGLER</option>
-                                        <option value="MERCEDES" {{$armada->merk == "MERCEDES" ? 'selected' : ''}}>MERCEDES</option>
-                                        <option value="HINO" {{$armada->merk == "HINO" ? 'selected' : ''}}>HINO</option>
+                                        data-placeholder="Select an option" name="merk">
+                                        <option></option>
+                                        <option value="MITSUBISHI" selected="selected">MITSUBISHI</option>
+                                        <option value="SUZUKI">SUZUKI</option>
+                                        <option value="ISUZU">ISUZU</option>
+                                        <option value="TOYOTA">TOYOTA</option>
+                                        <option value="KIA">KIA</option>
+                                        <option value="DAIHATSU">DAIHATSU</option>
+                                        <option value="HONDA">HONDAd</option>
+                                        <option value="FORD">FORD</option>
+                                        <option value="LANDROVER" >LANDROVER</option>
+                                        <option value="WRANGLER">WRANGLER</option>
+                                        <option value="MERCEDES">MERCEDES</option>
+                                        <option value="HINO">HINO</option>
                                     </select>
-                                    <x-forms.input-error name="merk" />
                                 </div>
                             </div>
                             <!-- Row 2 -->

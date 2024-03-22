@@ -35,7 +35,7 @@
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <h4>Edit Armada</h4>
+                        <h4>Add Armada</h4>
                     </div>
                     <!--end::Card title-->
                 </div>
@@ -44,9 +44,8 @@
                 <div class="card-body pt-5">
                     <!--begin::Form-->
                     <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                        action="{{ route('admin.master.armada.update',$armada->id) }}" enctype="multipart/form-data">
+                        action="{{ route('admin.master.armada.store') }}" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <!--begin::Input group-->
                         <div class="fv-row mb-7 fv-plugins-icon-container">
                             <!-- Row 1 -->
@@ -54,36 +53,35 @@
                                 <div class="col-md-4">
                                     <!-- Input 1 -->
                                     <x-forms.input id="namapemilik" label="Nama Pemilik" :required="'required'" name="namapemilik"
-                                        type="text" :placeholder="'Masukkan Nama Pemilik...'" :func="''" :isiFunc="''"
-                                        value=" {{old('namapemilik') ?? $armada->namapemilik }} " />
+                                        type="text" :placeholder="'Masukkan nama pemilik...'" :func="''" :isiFunc="''"
+                                        :value=" old('namapemilik') !== null ? old('namapemilik') : '' " />
                                     <x-forms.input-error name="namapemilik" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 3 -->
                                     <x-forms.input id="nopol" label="Nomor Polisi" :required="'required'" name="nopol"
-                                        type="text" :placeholder="'Masukkan Nomor Polisi...'" :func="''" :isiFunc="''"
-                                        value=" {{old('nopol') ?? $armada->nopol }} " />
+                                        type="text" :placeholder="'Masukkan nama pemilik...'" :func="''" :isiFunc="''"
+                                        :value=" old('nopol') !== null ? old('nopol') : '' " />
                                     <x-forms.input-error name="nopol" />
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="fs-6 fw-bold form-label mt-3" >Categories</label>
+                                    <label class="fs-6 fw-bold form-label mt-3">Categories</label>
                                     <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                        data-placeholder="Select an option" name="merk" required>
-                                        <option disabled selected>--Pilih Merk--</option>
-                                        <option value="MITSUBISHI" {{$armada->merk == "MITSUBISHI" ? 'selected' : ''}} >MITSUBISHI</option>
-                                        <option value="SUZUKI" {{$armada->merk == "SUZUKI" ? 'selected' : ''}}>SUZUKI</option>
-                                        <option value="ISUZU" {{$armada->merk == "ISUZU" ? 'selected' : ''}}>ISUZU</option>
-                                        <option value="TOYOTA" {{$armada->merk == "TOYOTA" ? 'selected' : ''}}>TOYOTA</option>
-                                        <option value="KIA" {{$armada->merk == "KIA" ? 'selected' : ''}}>KIA</option>
-                                        <option value="DAIHATSU" {{$armada->merk == "DAIHATSU" ? 'selected' : ''}} >DAIHATSU</option>
-                                        <option value="HONDA" {{$armada->merk == "HONDA" ? 'selected' : ''}}>HONDA</option>
-                                        <option value="FORD" {{$armada->merk == "FORD" ? 'selected' : ''}}>FORD</option>
-                                        <option value="LANDROVER" {{$armada->merk == "LANDROVER" ? 'selected' : ''}}>LANDROVER</option>
-                                        <option value="WRANGLER"{{$armada->merk == "WRANGLER" ? 'selected' : ''}}>WRANGLER</option>
-                                        <option value="MERCEDES" {{$armada->merk == "MERCEDES" ? 'selected' : ''}}>MERCEDES</option>
-                                        <option value="HINO" {{$armada->merk == "HINO" ? 'selected' : ''}}>HINO</option>
+                                        data-placeholder="Select an option" name="merk">
+                                        <option></option>
+                                        <option value="MITSUBISHI"   selected="selected">MITSUBISHI</option>
+                                        <option value="SUZUKI">SUZUKI</option>
+                                        <option value="ISUZU">ISUZU</option>
+                                        <option value="TOYOTA">TOYOTA</option>
+                                        <option value="KIA">KIA</option>
+                                        <option value="DAIHATSU">DAIHATSU</option>
+                                        <option value="HONDA">HONDAd</option>
+                                        <option value="FORD">FORD</option>
+                                        <option value="LANDROVER" >LANDROVER</option>
+                                        <option value="WRANGLER">WRANGLER</option>
+                                        <option value="MERCEDES">MERCEDES</option>
+                                        <option value="HINO">HINO</option>
                                     </select>
-                                    <x-forms.input-error name="merk" />
                                 </div>
                             </div>
                             <!-- Row 2 -->
@@ -92,48 +90,48 @@
                                 <div class="col-md-4">
                                     <!-- Input 4 -->
                                     <x-forms.input id="nomesin" label="Nomor Mesin" :required="'required'" name="nomesin"
-                                        type="text" placeholder="Masukkan No Mesin..." :func="''" :isiFunc="''"
-                                        value=" {{old('nomesin') ?? $armada->nomesin }} " />
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value=" old('nomesin') !== null ? old('nomesin') : '' " />
                                     <x-forms.input-error name="nomesin" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 5 -->
                                     <x-forms.input id="norangka" label="Nomor Rangka" :required="'required'" name="norangka"
-                                        type="text" placeholder="Masukkan No Rangka..." :func="''" :isiFunc="''"
-                                        value=" {{old('norangka') ?? $armada->norangka }} " />
-
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value=" old('norangka') !== null ? old('norangka') : '' " />
                                     <x-forms.input-error name="norangka" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 7 -->
                                     <x-forms.input id="bbm" label="BBM" :required="'required'" name="bbm"
-                                        type="text" placeholder="Masukkan Jenis BBM..." :func="''" :isiFunc="''"
-                                        value=" {{old('bbm') ?? $armada->bbm }} " />
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value="old('bbm') !== null ? old('bbm') : ''" />
                                     <x-forms.input-error name="bbm" />
                                 </div>
                             </div>
                             <!-- Row 3 -->
                             <div class="row">
+
+
                                 <div class="col-md-4">
                                     <!-- Input 7 -->
                                     <x-forms.input id="tahunproduksi" label="Tahun Produksi" :required="'required'"
-                                        name="tahunproduksi" type="text" placeholder="Masukkan Tahun Produksi..." :func="''"
-                                        :isiFunc="''"
-                                        value=" {{old('tahunproduksi') ?? $armada->tahunproduksi }} " />
+                                        name="tahunproduksi" type="text" placeholder="Masukkan nama..." :func="''"
+                                        :isiFunc="''" :value="old('tahunproduksi') !== null ? old('tahunproduksi') : ''" />
                                     <x-forms.input-error name="tahunproduksi" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="gol" label="Golongan" :required="'required'" name="gol"
-                                        type="text" placeholder="Masukkan Golongan..." :func="''" :isiFunc="''"
-                                        value=" {{old('gol') ?? $armada->gol }} " />
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value=" old('gol') !== null ? old('gol') : '' " />
                                     <x-forms.input-error name="gol" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 5 -->
                                     <x-forms.input id="tipe" label="Nomor Rangka" :required="'required'" name="tipe"
-                                        type="text" placeholder="Masukkan Nomor Rangka..." :func="''" :isiFunc="''"
-                                        value=" {{old('tipe') ?? $armada->tipe }} " />
+                                        type="text" placeholder="Masukkan Tipe..." :func="''" :isiFunc="''"
+                                        :value=" old('tipe') !== null ? old('tipe') : '' " />
                                     <x-forms.input-error name="tipe" />
                                 </div>
                             </div>
@@ -148,25 +146,23 @@
                                 <div class="col-md-4">
                                     <!-- Input 6 -->
                                     <x-forms.input id="karoseri" label="Karoseri" :required="'required'" name="karoseri"
-                                        type="text" placeholder="Masukkan Jenis Karoseri..." :func="''" :isiFunc="''"
-                                        value=" {{old('karoseri') ?? $armada->karoseri }} " />
+                                        type="text" placeholder="Masukkan nama pemilik..." :func="''" :isiFunc="''"
+                                        :value=" old('karoseri') !== null ? old('karoseri') : '' " />
                                     <x-forms.input-error name="karoseri" />
                                 </div>
 
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="inv" label="Inventaris" :required="'required'" name="inv"
-                                        type="text" placeholder="Masukkan Jenis Inventaris..." :func="''" :isiFunc="''"
-                                        value=" {{old('inv') ?? $armada->inv }} " />
-
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value=" old('inv') !== null ? old('inv') : '' " />
                                     <x-forms.input-error name="inv" />
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 8 -->
                                     <x-forms.input id="ops" label="Operasional" :required="'required'" name="ops"
-                                        type="text" placeholder="Masukkan Jenis Operasional..." :func="''" :isiFunc="''"
-                                        value=" {{old('ops') ?? $armada->ops }} " />
-
+                                        type="text" placeholder="Masukkan nama..." :func="''" :isiFunc="''"
+                                        :value=" old('ops') !== null ? old('ops') : '' " />
                                     <x-forms.input-error name="ops" />
 
                                 </div>
@@ -177,17 +173,14 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
                                         <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{old('lastkir') ??
-                                            \Carbon\Carbon::parse($armada->lastkir)->format('Y-m-d') }}" placeholder="Select date" name="lastkir"/>
+                                            <input type="date" class="form-control" value="{{ old('lastkir') }}" placeholder="Select date" name="lastkir">
                                             <x-forms.input-error name="lastkir" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR KIR</label>
                                         <div class="input-group date">
-
-                                            <input type="date" class="form-control" value="{{old('futurekir') ??
-                                            \Carbon\Carbon::parse($armada->futurekir)->format('Y-m-d') }}" placeholder="Select date" name="futurekir"/>
+                                            <input type="date" class="form-control" value="{{ old('futurekir') }}" placeholder="Select date" name="futurekir">
                                             <x-forms.input-error name="futurekir" />
                                         </div>
                                     </div>
@@ -196,8 +189,7 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">MULAI STNK</label>
                                         <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{old('laststnk') ??
-                                            \Carbon\Carbon::parse($armada->laststnk)->format('Y-m-d') }}" placeholder="Select date" name="laststnk">
+                                            <input type="date" class="form-control" value="{{ old('laststnk') }}" placeholder="Select date" name="laststnk">
                                             <x-forms.input-error name="laststnk" />
                                         </div>
                                     </div>
@@ -205,8 +197,7 @@
                                     <div class="col-md-4">
                                         <label class="fs-6 fw-bold form-label mt-3">AKHIR STNK</label>
                                         <div class="input-group date">
-                                            <input type="date" class="form-control" value="{{old('futurestnk') ??
-                                            \Carbon\Carbon::parse($armada->futurestnk)->format('Y-m-d') }}" placeholder="Select date" name="futurestnk">
+                                            <input type="date" class="form-control" value="{{ old('futurestnk') }}" placeholder="Select date" name="futurestnk">
                                             <x-forms.input-error name="futurestnk" />
                                         </div>
                                     </div>
