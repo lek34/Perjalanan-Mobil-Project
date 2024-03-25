@@ -76,18 +76,34 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <x-forms.input id="qty" label="Qty" :required="'required'" name="qty"
-                                        type="number" :placeholder="'Masukkan qty...'" :func="''" :isiFunc="''"
-                                        :value=" old('qty') !== null ? old('qty') : '' " />
-                                    <x-forms.input-error name="qty" />
+                                    <x-forms.input id="qtykecil" label="Qty Kecil" :required="'required'" name="qtykecil"
+                                        type="number" :placeholder="'Masukkan qtykecil...'" :func="''" :isiFunc="''"
+                                        :value=" old('qtykecil') !== null ? old('qtykecil') : '' " />
+                                    <x-forms.input-error name="qtykecil" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <x-forms.input id="uom" label="Uom" :required="'required'" name="uom"
-                                        type="text" :placeholder="'Masukkan qty...'" :func="''" :isiFunc="''"
-                                        :value=" old('uom') !== null ? old('uom') : '' " />
-                                    <x-forms.input-error name="uom" />
+                                    <x-forms.input id="uomkecil" label="Uom Kecil" :required="'required'" name="uomkecil"
+                                        type="text" :placeholder="'Masukkan uomkecil...'" :func="''" :isiFunc="''"
+                                        :value=" old('uomkecil') !== null ? old('uomkecil') : '' " />
+                                    <x-forms.input-error name="uomkecil" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <x-forms.input id="qtybesar" label="Qty Besar" :required="'required'" name="qtybesar"
+                                        type="number" :placeholder="'Masukkan qtybesar...'" :func="''" :isiFunc="''"
+                                        :value=" old('qtybesar') !== null ? old('qtybesar') : '' " />
+                                    <x-forms.input-error name="qtybesar" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <x-forms.input id="uombesar" label="Uom Besar" :required="'required'" name="uombesar"
+                                        type="text" :placeholder="'Masukkan uombesar...'" :func="''" :isiFunc="''"
+                                        :value=" old('uombesar') !== null ? old('uombesar') : '' " />
+                                    <x-forms.input-error name="uombesar" />
                                 </div>
                             </div>
                         </div>

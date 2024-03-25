@@ -12,5 +12,5 @@ class Sparepart extends Model
 
     protected $table = 'spareparts';
 
-    protected $fillable = ['nama','partnumber','alias','qty','uom'];
+    protected $fillable = ['nama','partnumber','alias','qtykecil','uomkecil','qtybesar','uombesar'];
 }

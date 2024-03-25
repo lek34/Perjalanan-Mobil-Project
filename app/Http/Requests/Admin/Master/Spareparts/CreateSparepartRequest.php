@@ -27,8 +27,10 @@ class CreateSparepartRequest extends FormRequest
             'nama' => 'required|unique:spareparts,nama|max:100',
             'partnumber' => 'required|max:255',
             'alias' => 'required|max:255',
-            'qty' => 'required|integer|max:255',
-            'uom' => 'required|max:255',
+            'qtykecil' => 'required|integer|max:255',
+            'uomkecil' => 'required|max:255',
+            'qtybesar' => 'required|integer|max:255',
+            'uombesar' => 'required|max:255',
 
         ];
     }
