@@ -10,16 +10,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     use SoftDeletes;
 
     public function up(): void
     {
-        Schema::create('order_detail_spareparts', function (Blueprint $table) {
+        Schema::create('pembelians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pembelian_sparepart_id')->constrained();
-            $table->foreignId('sparepart_id')->constrained();
-            $table->string('uom');
-            $table->string('qty');
+            $table->date('tanggal');
+            $table->string('supplier');
+            $table->string('no_do');
+            $table->bigInteger('total_harga');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_detail_spareparts');
+        Schema::dropIfExists('pembelians');
     }
 };

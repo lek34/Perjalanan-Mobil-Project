@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Master\ArmadaController;
+use App\Http\Controllers\Admin\Master\PembelianController;
 use App\Http\Controllers\Admin\Master\SparepartController;
 
 Route::get('/', function () {
@@ -41,5 +42,15 @@ Route::controller(SparepartController::class)->middleware('auth')->prefix('admin
     Route::get('/restore/{id}', 'restore')->name('restore');
 });
 
+Route::controller(PembelianController::class)->middleware('auth')->prefix('admin/transaksi/pembelian')->name('admin.transaksi.pembelian.')->group(function(){
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/show/{id}','show')->name('show');
+    Route::get('/edit/{id}','edit')->name('edit');
+    Route::put('/update/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
+});
 
 require __DIR__.'/auth.php';
