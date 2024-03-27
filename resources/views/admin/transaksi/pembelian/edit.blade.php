@@ -83,41 +83,22 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <!-- Input 4 -->
-                                    <x-forms.input id="qtybesar" label="Qty Besar" :required="'required'" name="qtybesar"
+                                    <x-forms.input id="qty" label="Qty" :required="'required'" name="qty"
                                         type="text" placeholder="Masukkan Qty..." :func="''" :isiFunc="''"
-                                        value=" {{old('qtybesar') ?? $sparepart->qtybesar }} " />
-                                    <x-forms.input-error name="qtybesar" />
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- Input 4 -->
-                                    <x-forms.input id="uombesar" label="Uom Besar" :required="'required'" name="uombesar"
-                                        type="text" placeholder="Masukkan Uom..." :func="''" :isiFunc="''"
-                                        value=" {{old('uombesar') ?? $sparepart->uombesar }} " />
-                                    <x-forms.input-error name="uombesar" />
+                                        value=" {{old('qty') ?? $sparepart->qty }} " />
+                                    <x-forms.input-error name="qty" />
                                 </div>
                             </div>
-
-
 
                             <div class="row">
                                 <div class="col-md-4">
                                     <!-- Input 4 -->
-                                    <x-forms.input id="qtykecil" label="Qty Kecil" :required="'required'" name="qtykecil"
-                                        type="text" placeholder="Masukkan Qty Kecil..." :func="''" :isiFunc="''"
-                                        value=" {{old('qtykecil') ?? $sparepart->qtykecil }} " />
-                                    <x-forms.input-error name="qtykecil" />
-                                </div>
-
-                                <div class="col-md-4">
-                                    <!-- Input 4 -->
-                                    <x-forms.input id="uomkecil" label="Uom Kecil" :required="'required'" name="uomkecil"
+                                    <x-forms.input id="uom" label="Uom" :required="'required'" name="uom"
                                         type="text" placeholder="Masukkan Uom..." :func="''" :isiFunc="''"
-                                        value=" {{old('uomkecil') ?? $sparepart->uomkecil }} " />
-                                    <x-forms.input-error name="uomkecil" />
+                                        value=" {{old('uom') ?? $sparepart->uom }} " />
+                                    <x-forms.input-error name="uom" />
                                 </div>
                             </div>
-
-
 
                         </div>
 

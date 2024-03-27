@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 
-@section('title', 'Sparepart')
+@section('title', 'Pembelian')
 @section('content')
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
@@ -11,7 +11,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Sparepart</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Pembelian</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -84,8 +84,8 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.master.sparepart.create') }}" class="btn btn-primary">Add
-                            Sparepart</a>
+                        <a href="{{ route('admin.transaksi.pembelian.create') }}" class="btn btn-primary">Add
+                            Pembelian</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->
@@ -100,14 +100,9 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-100px">No</th>
-                                <th class="min-w-125px">Nama</th>
-                                <th class="min-w-125px">No Part</th>
-                                <th class="min-w-125px">Alias</th>
-                                <th class="min-w-125px">Qty Besar</th>
-                                <th class="min-w-125px">Uom Besar</th>
-                                <th class="min-w-125px">Qty Kecil</th>
-                                <th class="min-w-125px">Uom Kecil</th>
-                                <th class="min-w-125px">Stock</th>
+                                <th class="min-w-125px">Tanggal</th>
+                                <th class="min-w-125px">Supplier</th>
+                                <th class="min-w-125px">No DO</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
                             </tr>
@@ -117,38 +112,24 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            @foreach ($spareparts as $sparepart)
+                            @foreach ($pembelians as $pembelian)
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->nama }}
+                                        {{ $pembelian->tanggal }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->partnumber }}
+                                        {{ $pembelian->supplier }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->alias }}
+                                        {{ $pembelian->no_do }}
                                     </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->qtybesar }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->uombesar }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->qtykecil }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->uomkecil }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->stock ?? 0 }}
-                                    </td>
+
                                     <td>
                                         <!--begin::Badges-->
-                                        @if (is_null($sparepart->deleted_at))
+                                        @if (is_null($pembelian->deleted_at))
                                             <div class="badge badge-light-success">Unlock</div>
                                         @else
                                             <div class="badge badge-light-danger">Lock</div>
@@ -175,29 +156,29 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <!--begin::Badges-->
-                                            @if (is_null($sparepart->deleted_at))
+                                            @if (is_null($pembelian->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.sparepart.show', $sparepart->id) }}"
+                                                    <a href="{{ route('admin.transaksi.pembelian.show', $pembelian->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.sparepart.edit', $sparepart->id) }}"
+                                                    <a href="{{ route('admin.transaksi.pembelian.edit', $pembelian->id) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <div class="menu-item px-3">
                                                     <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#delete{{ $sparepart->id }}"
+                                                        data-bs-target="#delete{{ $pembelian->id }}"
                                                         class="btn btn-danger btn-sm delete">
                                                         <i class="fas fa-trash"></i>Delete
                                                     </button>
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.sparepart.show', $sparepart->id) }}"
+                                                    <a href="{{ route('admin.transaksi.pembelian.show', $pembelian->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.master.sparepart.restore', $sparepart->id) }}"
+                                                    <a href="{{ route('admin.transaksi.pembelian.restore', $pembelian->id) }}"
                                                         class="menu-link px-3">Restore</a>
                                                 </div>
                                             @endif
@@ -207,7 +188,7 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$sparepart->id" :route="route('admin.master.sparepart.delete', $sparepart->id)" :model="$sparepart" :modelAttribute="'nama'" />
+                                <x-confirm-delete :id="$pembelian->id" :route="route('admin.master.pembelian.delete', $pembelian->id)" :model="$pembelian" :modelAttribute="'no_do'" />
                             @endforeach
                         </tbody>
                         <!--end::Table body-->

@@ -14,11 +14,14 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('order_spareparts', function (Blueprint $table) {
+        Schema::create('detail_pembelians', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_pesan');
-            $table->string('supplier');
-            $table->string('no_order');
+            $table->foreignId('pembelian_id')->constrained();
+            $table->foreignId('sparepart_id')->constrained();
+            $table->string('uom');
+            $table->bigInteger('qty');
+            $table->bigInteger('harga');
+            $table->bigInteger('total_harga');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_spareparts');
+        Schema::dropIfExists('detail_pembelians');
     }
 };

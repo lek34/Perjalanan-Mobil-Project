@@ -81,8 +81,6 @@
                                         :value=" old('qtykecil') !== null ? old('qtykecil') : '' " />
                                     <x-forms.input-error name="qtykecil" />
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <x-forms.input id="uomkecil" label="Uom Kecil" :required="'required'" name="uomkecil"
                                         type="text" :placeholder="'Masukkan uomkecil...'" :func="''" :isiFunc="''"
@@ -90,6 +88,7 @@
                                     <x-forms.input-error name="uomkecil" />
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <x-forms.input id="qtybesar" label="Qty Besar" :required="'required'" name="qtybesar"
@@ -97,8 +96,6 @@
                                         :value=" old('qtybesar') !== null ? old('qtybesar') : '' " />
                                     <x-forms.input-error name="qtybesar" />
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <x-forms.input id="uombesar" label="Uom Besar" :required="'required'" name="uombesar"
                                         type="text" :placeholder="'Masukkan uombesar...'" :func="''" :isiFunc="''"
