@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\Transaksi;
 
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
