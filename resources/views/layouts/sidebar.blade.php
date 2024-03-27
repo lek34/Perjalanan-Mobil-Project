@@ -105,12 +105,21 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <a class="menu-link {{!empty($pembelian_menu) ? $pembelian_menu : ''}}" href="{{ route('admin.transaksi.pembelian.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Pembelian</span>
+                            </a>
+                        </div> --}}
+
+                        <div class="menu-item">
+                            <a class="menu-link {{!empty($pemakaian_menu) ? $pemakaian_menu : ''}}" href="{{ route('admin.transaksi.pemakaian.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pemakaian Sparepart</span>
                             </a>
                         </div>
 
