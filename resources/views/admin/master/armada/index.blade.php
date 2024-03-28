@@ -177,6 +177,10 @@
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.transaksi.pemakaian.create', $armada->id) }}"
+                                                        class="menu-link px-3">Berbengkel</a>
+                                                </div>
+                                                <div class="menu-item px-3">
                                                     <button type="button" data-bs-toggle="modal"
                                                         data-bs-target="#delete{{ $armada->id }}"
                                                         class="btn btn-danger btn-sm delete">

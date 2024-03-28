@@ -56,7 +56,7 @@ Route::controller(PembelianController::class)->middleware('auth')->prefix('admin
 
 Route::controller(PemakaianSparepartController::class)->middleware('auth')->prefix('admin/transaksi/pemakaian')->name('admin.transaksi.pemakaian.')->group(function(){
     Route::get('/index', 'index')->name('index');
-    Route::get('/create','create')->name('create');
+    Route::get('/create/{id}','create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/show/{id}','show')->name('show');
     Route::get('/edit/{id}','edit')->name('edit');
@@ -64,5 +64,7 @@ Route::controller(PemakaianSparepartController::class)->middleware('auth')->pref
     Route::delete('/delete/{id}', 'destroy')->name('delete');
     Route::get('/restore/{id}', 'restore')->name('restore');
 });
+
+
 
 require __DIR__.'/auth.php';
