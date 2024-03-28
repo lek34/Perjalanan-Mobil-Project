@@ -127,9 +127,14 @@
                                                         type="number" name="qty" placeholder="Qty" value="">
                                                 </td>
                                                 <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="uom"
-                                                        type="text" name="uom" placeholder="Satuan"
-                                                        value="">
+                                                    <select class="form-select mb-2 select2-hidden-accessible"
+                                                        id="uom" data-control="select2" data-hide-search="true"
+                                                        data-placeholder="Satuan" tabindex="-1"
+                                                        aria-hidden="true" on="resetSelect()">
+                                                        <option disabled selected value>-- Pilih Barang--</option>
+                                                        <option value="1">kotak</option>
+                                                        <option value="2">Pcs</option>
+                                                    </select>
                                                 </td>
                                                 <td class="ps-0">
                                                     <input class="form-control form-control-solid" id="harga"
@@ -408,7 +413,7 @@
 
         var status = document.getElementById("status").value
 
-        if(status = "N"){
+        if(status === "N"){
             $("#nama").val(null).trigger("change");
             nama.value = "2"
             merk.value = "-";
