@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Transaksi;
 
 use App\Models\Armada;
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 use App\Models\PemakaianSparepart;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,8 @@ class PemakaianSparepartController extends Controller
         $transaksi_acc = 'here show';
         $pemakaian_menu = 'active';
         $armada = Armada::findorFail($id);
-        return view('admin.transaksi.pemakaian.create', compact('transaksi_acc', 'pemakaian_menu','armada'));
+        $sparepart = Sparepart::all();  
+        return view('admin.transaksi.pemakaian.create', compact('transaksi_acc', 'pemakaian_menu','armada', 'sparepart'));
     }
 
     /**

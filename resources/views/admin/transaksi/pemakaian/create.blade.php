@@ -2,66 +2,28 @@
 @section('title', 'Berbengkel')
 
 @section('content')
-    <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
-        <!--begin::Container-->
         <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-            <!--begin::Page title-->
-
-            <!--end::Page title-->
-            <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
-                <!--begin::Filter menu-->
-                <!--end::Filter menu-->
-                <!--begin::Secondary button-->
-                <!--end::Secondary button-->
-                <!--begin::Primary button-->
-
-                <!--end::Primary button-->
             </div>
-            <!--end::Actions-->
         </div>
-        <!--end::Container-->
     </div>
-    <!--end::Toolbar-->
-    <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
-        <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-                <!--begin::Title-->
                 <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Form Berbengkel</h1>
-                <!--end::Title-->
-                <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
-                <!--end::Separator-->
             </div>
-            <!--begin::Layout-->
             <div class="d-flex flex-column flex-lg-row">
-                <!--begin::Content-->
                 <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
-                    <!--begin::Card-->
                     <div class="card">
-                        <!--begin::Card body-->
                         <div class="card-body p-12">
-                            <!--begin::Form-->
-                            <form action="{{ route('admin.transaksi.pemakaian.store') }}" method="POST"
-                                id="form">
+                            <form action="{{ route('admin.transaksi.pemakaian.store') }}" method="POST" id="form">
                                 @csrf
-                                <input type="hidden" name="tableData" id="tableData"
-                                    value="{{ old('tableData') ?? '' }}">
-                                <!--begin::Wrapper-->
+                                <input type="hidden" name="tableData" id="tableData" value="{{ old('tableData') ?? '' }}">
                                 <div class="">
-                                    <!--begin::Input group-->
-
-                                    <!--end::Input group-->
-
-                                    <!--begin::Input group-->
-
-                                    <!--end::Input group-->
-
                                     <div class="row mb-4">
                                         <div class="col-md-4">
                                             <label class="fs-6 fw-bold form-label">Tanggal :</label>
@@ -70,100 +32,81 @@
                                                     placeholder="Select date" id="tanggal" name="tanggal">
                                             </div>
                                             <x-forms.input-error name="tanggal" />
-
                                         </div>
                                         <div class="col-md-4">
-
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nomor
+                                                Rekening</label>
+                                            <div class="mb-5">
+                                                <input type="text" name="norek" id="norek"
+                                                    class="form-control form-control-solid" placeholder="Nomor Rekening">
+                                                <x-forms.input-error name="norek" />
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
+                                            <label class="fs-6 fw-bold form-label">Nomor Bon :</label>
                                             <div class="input-group date">
-                                                <input type="date" class="form-control" value=""
-                                                    placeholder="Select date" id="jatuh_tempo" name="jatuh_tempo">
-
+                                                <input type="text" name="nobon" id="nobon"
+                                                    class="form-control form-control-solid" placeholder="Nomor Bon">
+                                                <x-forms.input-error name="nobon" />
                                             </div>
                                             <x-forms.input-error name="jatuh_tempo" />
 
                                         </div>
                                     </div>
-                                    {{-- <div class="row">
-                                        <div class="col-md-4">
-                                            <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
-                                            <div class="input-group date">
-                                                <input type="date" class="form-control" value=""
-                                                    placeholder="Select date" name="jatuhtempo">
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
                                 </div>
-                                <!--end::Top-->
-                                <!--begin::Separator-->
                                 <div class="separator separator-dashed my-10"></div>
-                                <!--end::Separator-->
-                                <!--begin::Wrapper-->
                                 <div class="mb-0">
-                                    <!--begin::Row-->
                                     <div class="row gx-10 mb-5">
-                                        <!--begin::Col-->
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Armada</label>
-                                            <select class="form-select mb-2 select2" id="project_id" name="project_id">
-                                                <option value="{{ $armada->id }}">{{ $armada->nopol }}</option>
-                                            </select>
+                                            <input type="text" name="nopol" id="nopol"
+                                                class="form-control form-control-solid" value="{{ $armada->nopol }}"
+                                                readonly style="color: #979797">
                                             <x-forms.input-error name="project_id" />
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Supplier</label>
-                                            <!--begin::Input group-->
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nama Mekanik</label>
                                             <div class="mb-5">
-                                                <input type="text" name="supplier" id="supplier"
-                                                    class="form-control form-control-solid" placeholder="Name Supplier">
-                                                <x-forms.input-error name="supplier" />
+                                                <input type="text" name="namamekanik" id="namamekanik"
+                                                    class="form-control form-control-solid" placeholder="Nama Mekanik">
+                                                <x-forms.input-error name="namamekanik" />
                                             </div>
-                                            <!--end::Input group-->
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Status
-                                                Bayar</label>
-                                            <!--begin::Input group-->
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Pemakaian Sparepart
+                                            </label>
                                             <div class="mb-5">
                                                 <select class="form-select mb-2" data-control="select2" id="status"
-                                                    name="status" data-placeholder="Pilih Status" tabindex="-1">
-                                                    <option disabled selected value>-- Pilih Status Bayar--</option>
+                                                    name="status" data-placeholder="Pemakaian Sparepart" tabindex="-1"
+                                                    onchange="showDiv('', this)"">
+
                                                     <option value="Y" {{ old('status') == 'Y' ? 'selected' : '' }}>
-                                                        Bayar</option>
+                                                        Ada</option>
                                                     <option value="N" {{ old('status') == 'N' ? 'selected' : '' }}>
-                                                        Belum Bayar</option>
+                                                        Tidak Ada</option>
                                                 </select>
                                                 <x-forms.input-error name="status" />
                                             </div>
-                                            <!--end::Input group-->
                                         </div>
-                                        <!--end::Col-->
 
                                     </div>
                                     <div class="border-bottom border-bottom-dashed text-end">
 
                                     </div>
 
-                                    <div class="table-responsive mb-10">
-                                        <!--begin::Table-->
+                                    <div class="table-responsive mb-10" id="hidden_div1">
                                         <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700">
-                                            <!--begin::Table head-->
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
-                                                    <th class="min-w-150 w-250">Item</th>
-                                                    <th class="min-w-100 w-200">Merk</th>
+                                                    <th class="min-w-150 w-250">Nama Barang</th>
+                                                    <th class="min-w-100 w-200">Asal</th>
                                                     <th class="min-w-100px w-100px">QTY</th>
-                                                    <th class="min-w-100px w-100px">Uom</th>
+                                                    <th class="min-w-100px w-100px">Satuan</th>
                                                     <th class="min-w-150px w-150px">Harga</th>
                                                     <th class="min-w-100px w-150px ">Total</th>
                                                     <th class="min-w-75px w-75px ">Action</th>
                                                 </tr>
                                             </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
                                             <tbody>
                                                 <td class="pe-7">
                                                     <select class="form-select mb-2 select2-hidden-accessible"
@@ -171,7 +114,8 @@
                                                         data-placeholder="Select an option" tabindex="-1"
                                                         aria-hidden="true" on="resetSelect()">
                                                         <option disabled selected value>-- Pilih Barang--</option>
-
+                                                        <option value="1">Barang</option>
+                                                        <option value="2">Jasa</option>
                                                     </select>
                                                 </td>
                                                 <td class="ps-0">
@@ -184,7 +128,8 @@
                                                 </td>
                                                 <td class="ps-0">
                                                     <input class="form-control form-control-solid" id="uom"
-                                                        type="text" name="uom" placeholder="Uom" value="">
+                                                        type="text" name="uom" placeholder="Satuan"
+                                                        value="">
                                                 </td>
                                                 <td class="ps-0">
                                                     <input class="form-control form-control-solid" id="harga"
@@ -201,57 +146,51 @@
                                                         onclick="addRow()">Tambah</button>
                                                 </td>
                                             </tbody>
-                                            <!--end::Table body-->
-
                                         </table>
                                     </div>
-                                    <!--end::Row-->
-                                    <!--begin::Table wrapper-->
-                                    <div class="table-responsive mb-10">
-                                        <!--begin::Table-->
+                                    <div class="table-responsive mb-10" id="hidden_div2">
                                         <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="itemTable">
-                                            <!--begin::Table head-->
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
                                                     <th style="display: none;">id</th>
                                                     <th class="min-w-200 w-300">Item</th>
                                                     <th class="min-w-100 w-200">Merk</th>
                                                     <th class="min-w-100px w-100px">QTY</th>
-                                                    <th class="min-w-100px w-100px">Uom</th>
+                                                    <th class="min-w-100px w-100px">Satuan</th>
                                                     <th class="min-w-150px w-150px">Harga</th>
                                                     <th class="min-w-100px w-150px">Total</th>
                                                     <th class="min-w-75px w-75px text-end">Action</th>
                                                 </tr>
                                             </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
                                             <tbody>
-                                                {{-- Add item dynamicly --}}
 
                                             </tbody>
-                                            <!--end::Table body-->
-                                            <!--begin::Table foot-->
+
                                             <tfoot>
 
                                             </tfoot>
-                                            <!--end::Table foot-->
+
                                         </table>
-                                        <!--end::Table-->
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Keterangan</label>
+                                            <div class="form-group mb-1" name="keterangan">
+                                                <textarea class="form-control form-control-solid" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
 
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
-                                            <!--begin::Input group-->
+                                            {{-- <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
                                             <div class="mb-5">
                                                 <input class="form-control form-control-solid" id="subtotal"
                                                     type="text" name="subtotal" placeholder="Rp 0.00" value=""
                                                     readonly>
-                                            </div>
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Total</label>
-                                            <!--begin::Input group-->
+                                            </div> --}}
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Jumlah Rupiah
+                                                Terpakai</label>
                                             <div class="mb-5">
                                                 <input class="form-control form-control-solid" id="total"
                                                     type="text" name="total" placeholder="Rp 0.00" value=""
@@ -272,24 +211,13 @@
                                         <!--end::Button-->
                                     </div>
                                 </div>
-                                <!--end::Wrapper-->
                             </form>
-                            <!--end::Form-->
                         </div>
-                        <!--end::Card body-->
                     </div>
-                    <!--end::Card-->
                 </div>
-                <!--end::Content-->
-                <!--begin::Sidebar-->
-
-                <!--end::Sidebar-->
             </div>
-            <!--end::Layout-->
         </div>
-        <!--end::Container-->
     </div>
-    <!--end::Post-->
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -476,12 +404,27 @@
             '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
 
         // Clear input fields after adding a row
-        $("#nama").val(null).trigger("change");
-        merk.value = "";
-        qty.value = "";
-        uom.value = "";
-        harga.value = "";
-        total_harga.value = "";
+        
+
+        var status = document.getElementById("status").value
+
+        if(status = "N"){
+            $("#nama").val(null).trigger("change");
+            nama.value = "2"
+            merk.value = "-";
+            qty.value = "0";
+            uom.value = "-";
+            harga.value = "0";
+            total_harga.value = "0";
+        }else{
+            $("#nama").val(null).trigger("change");
+            merk.value = "";
+            qty.value = "";
+            uom.value = "";
+            harga.value = "";
+            total_harga.value = "";
+        }
+       
 
         // Call pushItemToArray to get the table data as an array of objects
 
@@ -534,7 +477,7 @@
     function updateTotals() {
         // Update totals
         var table = document.getElementById("itemTable");
-        var subTotal = 0;
+        // var subTotal = 0;
         var totalHarga = 0;
 
         for (var i = 0, row; row = table.rows[i]; i++) {
@@ -544,15 +487,46 @@
                 continue;
             }
 
-            var sub = parseFloat(row.cells[5].innerText.substring(3).replaceAll('.', ''));
+            // var sub = parseFloat(row.cells[5].innerText.substring(3).replaceAll('.', ''));
             var harga = parseFloat(row.cells[6].innerText.substring(3).replaceAll('.', ''));
 
-            subTotal += sub;
+            // subTotal += sub;
             totalHarga += harga;
         }
 
         // Display totals
-        document.getElementById("subtotal").value = 'Rp ' + formatNumber(subTotal);
+        // document.getElementById("subtotal").value = 'Rp ' + formatNumber(subTotal);
         document.getElementById("total").value = 'Rp ' + formatNumber(totalHarga);
+    }
+
+    function showDiv(divId, element) {
+        // Set values and readonly properties based on the value of the element
+        document.getElementById("merk").value = element.value == "N" ? '-' : '';
+        document.getElementById('merk').readOnly = element.value == "N" ? true : false;
+
+        document.getElementById("qty").value = element.value == "N" ? '0' : '';
+        document.getElementById('qty').readOnly = element.value == "N" ? true : false;
+
+        document.getElementById("uom").value = element.value == "N" ? '-' : '';
+        document.getElementById('uom').readOnly = element.value == "N" ? true : false;
+
+        document.getElementById("harga").value = element.value == "N" ? '0' : '';
+        document.getElementById('harga').readOnly = element.value == "N" ? true : false;
+
+        document.getElementById("total_harga").value = element.value == "N" ? '0' : '';
+        document.getElementById('total_harga').readOnly = element.value == "N" ? true : false;
+
+        document.getElementById("harga").value = element.value == "N" ? '0' : '';
+        document.getElementById('harga').readOnly = element.value == "N" ? true : false;
+
+        var namaElement = document.getElementById("nama");
+
+        // Check if 'namaElement' is valid before setting value and readOnly property
+        if (namaElement) {
+            namaElement.value = element.value == "N" ? '2' : '';
+            namaElement.readOnly = element.value == "N" ? true : false;
+        } else {
+            console.error("Element with ID 'nama' not found.");
+        }
     }
 </script>
