@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Transaksi;
 
-use App\Http\Controllers\Controller;
-use App\Models\PemakaianSparepart;
+use App\Models\Armada;
 use Illuminate\Http\Request;
+use App\Models\PemakaianSparepart;
+use App\Http\Controllers\Controller;
 
 class PemakaianSparepartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //
     public function index()
     {
         //
@@ -23,9 +22,13 @@ class PemakaianSparepartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
         //
+        $transaksi_acc = 'here show';
+        $pemakaian_menu = 'active';
+        $armada = Armada::findorFail($id);
+        return view('admin.transaksi.pemakaian.create', compact('transaksi_acc', 'pemakaian_menu','armada'));
     }
 
     /**
