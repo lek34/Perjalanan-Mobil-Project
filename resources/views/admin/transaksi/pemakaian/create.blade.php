@@ -28,7 +28,7 @@
                                         <div class="col-md-4">
                                             <label class="fs-6 fw-bold form-label">Tanggal :</label>
                                             <div class="input-group date">
-                                                <input type="date" class="form-control" value=""
+                                                <input type="date" class="form-control" value="{{old('tanggal') ?? ''}}"
                                                     placeholder="Select date" id="tanggal" name="tanggal">
                                             </div>
                                             <x-forms.input-error name="tanggal" />
@@ -38,7 +38,7 @@
                                                 Rekening</label>
                                             <div class="mb-5">
                                                 <input type="text" name="norek" id="norek"
-                                                    class="form-control form-control-solid" placeholder="Nomor Rekening">
+                                                    class="form-control form-control-solid" placeholder="Nomor Rekening" value="{{old('norek') ?? ''}}">
                                                 <x-forms.input-error name="norek" />
                                             </div>
                                         </div>
@@ -46,10 +46,10 @@
                                             <label class="fs-6 fw-bold form-label">Nomor Bon :</label>
                                             <div class="input-group date">
                                                 <input type="text" name="nobon" id="nobon"
-                                                    class="form-control form-control-solid" placeholder="Nomor Bon">
+                                                    class="form-control form-control-solid" placeholder="Nomor Bon" value="{{old('nobon') ?? ''}}">
                                                 <x-forms.input-error name="nobon" />
                                             </div>
-                                            <x-forms.input-error name="jatuh_tempo" />
+                                            <x-forms.input-error name="nobon" />
 
                                         </div>
                                     </div>
@@ -59,16 +59,16 @@
                                     <div class="row gx-10 mb-5">
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Armada</label>
-                                            <input type="text" name="nopol" id="nopol"
-                                                class="form-control form-control-solid" value="{{ $armada->nopol }}"
-                                                readonly style="color: #979797">
-                                            <x-forms.input-error name="project_id" />
+                                            <select class="form-select mb-2 select2" id="armada_id" name="armada_id">
+                                                <option value="{{ $armada->id }}">{{ $armada->nopol }}</option>
+                                            </select>
+                                            <x-forms.input-error name="armada_id" />
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nama Mekanik</label>
                                             <div class="mb-5">
                                                 <input type="text" name="namamekanik" id="namamekanik"
-                                                    class="form-control form-control-solid" placeholder="Nama Mekanik">
+                                                    class="form-control form-control-solid" value="{{old('namamekanik') ?? ''}}" placeholder="Nama Mekanik">
                                                 <x-forms.input-error name="namamekanik" />
                                             </div>
                                         </div>
@@ -114,13 +114,16 @@
                                                         data-placeholder="Select an option" tabindex="-1"
                                                         aria-hidden="true" on="resetSelect()">
                                                         <option disabled selected value>-- Pilih Barang--</option>
-                                                        <option value="1">Barang</option>
-                                                        <option value="2">Jasa</option>
+                                                        <option value="1">Barang 1</option>
+                                                        <option value="2">Barang 2</option>
+                                                        <option value="3">Barang 3</option>
+                                                        <option value="4">Barang 4</option>
+                                                        <option value="5">Jasa</option>
                                                     </select>
                                                 </td>
                                                 <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="merk"
-                                                        type="text" name="merk" placeholder="Merk" value="">
+                                                    <input class="form-control form-control-solid" id="asal"
+                                                        type="text" name="asal" placeholder="Asal" value="">
                                                 </td>
                                                 <td class="ps-0">
                                                     <input class="form-control form-control-solid" id="qty"
@@ -154,7 +157,7 @@
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
                                                     <th style="display: none;">id</th>
                                                     <th class="min-w-200 w-300">Item</th>
-                                                    <th class="min-w-100 w-200">Merk</th>
+                                                    <th class="min-w-100 w-200">Asal</th>
                                                     <th class="min-w-100px w-100px">QTY</th>
                                                     <th class="min-w-100px w-100px">Satuan</th>
                                                     <th class="min-w-150px w-150px">Harga</th>
@@ -175,8 +178,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Keterangan</label>
-                                            <div class="form-group mb-1" name="keterangan">
-                                                <textarea class="form-control form-control-solid" rows="5"></textarea>
+                                            <div class="form-group mb-1">
+                                                <textarea class="form-control form-control-solid" rows="5" name="keterangan">{{old('keterangan') ?? ''}}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -337,7 +340,7 @@
                 cell0.textContent = item.id;
                 cell0.style.display = 'none';
                 cell1.textContent = item.Item;
-                cell2.textContent = item.Merk;
+                cell2.textContent = item.Asal;
                 cell3.textContent = item.QTY;
                 cell4.textContent = item.Uom;
                 var hargaFormatted = parseFloat(item.Harga).toLocaleString('id-ID');
@@ -363,7 +366,7 @@
         // const data = [];
         // Get values from the input fields
         var nama = document.getElementById("nama");
-        var merk = document.getElementById("merk");
+        var asal = document.getElementById("asal");
         var qty = document.getElementById("qty");
         var uom = document.getElementById("uom");
         var harga = document.getElementById("harga");
@@ -395,7 +398,7 @@
         cell0.style.display = 'none'
         cell1.innerHTML = nama.options[nama.selectedIndex].text;
         // cell2.innerHTML =  '<span class="clickable" onclick="fetchHistoryPembelian('+barang.options[barang.selectedIndex].value+')">' + barang.options[barang.selectedIndex].text + '</span>';
-        cell2.innerHTML = merk.value;
+        cell2.innerHTML = asal.value;
         cell3.innerHTML = qty.value;
         cell4.innerHTML = uom.value;
         cell5.innerHTML = 'Rp. ' + harga.value;
@@ -404,27 +407,27 @@
             '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
 
         // Clear input fields after adding a row
-        
+
 
         var status = document.getElementById("status").value
 
-        if(status = "N"){
+        if(status === "N"){
             $("#nama").val(null).trigger("change");
             nama.value = "2"
-            merk.value = "-";
+            asal.value = "-";
             qty.value = "0";
             uom.value = "-";
             harga.value = "0";
             total_harga.value = "0";
         }else{
             $("#nama").val(null).trigger("change");
-            merk.value = "";
+            asal.value = "";
             qty.value = "";
             uom.value = "";
             harga.value = "";
             total_harga.value = "";
         }
-       
+
 
         // Call pushItemToArray to get the table data as an array of objects
 

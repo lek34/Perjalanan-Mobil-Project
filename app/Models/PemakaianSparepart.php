@@ -12,7 +12,7 @@ class PemakaianSparepart extends Model
 
     protected $table = 'pemakaian_spareparts';
 
-    protected $fillable = ['tanggal','armada_id','norek','nobon','namamekanik','status'];
+    protected $fillable = ['tanggal','armada_id','norek','nobon','namamekanik','status','keterangan'];
 
 
 }

@@ -12,6 +12,6 @@ class DetailPemakaianSparepart extends Model
 
     protected $table = 'detail_pemakaian_spareparts';
 
-    protected $fillable = ['pemakaian_sparepart_id','asal','sparepart_id','merk','qty','uom','harga'];
+    protected $fillable = ['pemakaian_sparepart_id','asal','sparepart_id','qty','uom','harga'];
 
 }
