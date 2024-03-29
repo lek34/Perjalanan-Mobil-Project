@@ -11,7 +11,7 @@ class CreatePemakaianSparepartRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class CreatePemakaianSparepartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tanggal' => 'required',
+            'norek' => 'required',
+            'nobon' => 'required',
+            'armada_id' => 'required',
+            'namamekanik' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+            'tableData' => 'required',
+            'tableData.*'  => 'required|string|min:5',
         ];
     }
 }

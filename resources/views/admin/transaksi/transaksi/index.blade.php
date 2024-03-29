@@ -94,6 +94,7 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
                     <!--begin::Table-->
+                    <input type="text" value="{{$transaksi}}">
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_datatable_example_5">
                         <!--begin::Table head-->
                         <thead>
@@ -111,9 +112,8 @@
                         <!--end::Table head-->
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
-
                             <!--begin::Table row-->
-                            @foreach ($pembelians as $pembelian)
+                            {{-- @foreach ($pembelians as $pembelian)
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
@@ -190,7 +190,7 @@
                                     <!--end::Action=-->
                                 </tr>
                                 <x-confirm-delete :id="$pembelian->id" :route="route('admin.master.pembelian.delete', $pembelian->id)" :model="$pembelian" :modelAttribute="'no_do'" />
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                         <!--end::Table body-->
                     </table>
