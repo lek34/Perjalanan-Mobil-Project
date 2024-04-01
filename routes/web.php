@@ -67,7 +67,7 @@ Route::controller(PemakaianSparepartController::class)->middleware('auth')->pref
     Route::get('/restore/{id}', 'restore')->name('restore');
 });
 
-Route::controller(PerjalananController::class)->middleware('auth')->prefix('admin/transaksi/pemakaian')->name('admin.transaksi.pemakaian.')->group(function(){
+Route::controller(PerjalananController::class)->middleware('auth')->prefix('admin/transaksi/perjalanan')->name('admin.transaksi.perjalanan.')->group(function(){
     Route::get('/index', 'index')->name('index');
     Route::get('/create/{id}','create')->name('create');
     Route::post('/store','store')->name('store');
