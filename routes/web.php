@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Master\ArmadaController;
 use App\Http\Controllers\Admin\Master\SparepartController;
 use App\Http\Controllers\Admin\Transaksi\PemakaianSparepartController;
 use App\Http\Controllers\Admin\Transaksi\PembelianController;
+use App\Http\Controllers\Admin\Transaksi\PerjalananController;
 use App\Http\Controllers\Admin\Transaksi\TransaksiController;
 
 Route::get('/', function () {
@@ -56,6 +57,17 @@ Route::controller(PembelianController::class)->middleware('auth')->prefix('admin
 });
 
 Route::controller(PemakaianSparepartController::class)->middleware('auth')->prefix('admin/transaksi/pemakaian')->name('admin.transaksi.pemakaian.')->group(function(){
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create/{id}','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/show/{id}','show')->name('show');
+    Route::get('/edit/{id}','edit')->name('edit');
+    Route::put('/update/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
+});
+
+Route::controller(PerjalananController::class)->middleware('auth')->prefix('admin/transaksi/pemakaian')->name('admin.transaksi.pemakaian.')->group(function(){
     Route::get('/index', 'index')->name('index');
     Route::get('/create/{id}','create')->name('create');
     Route::post('/store','store')->name('store');
