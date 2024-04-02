@@ -176,7 +176,7 @@
                                         <label class="fs-6 fw-bold form-label mt-3">Mulai KIR</label>
                                         <div class="input-group date">
                                             <input type="date" class="form-control" value="{{old('futurekir') ??
-                                            \Carbon\Carbon::parse($armada->futurekir)->format('Y-m-d') }}"
+                                            \Carbon\Carbon::parse($armada->futurekir)->format('Y-m-d') }}">
                                             <x-forms.input-error name="lastkir" />
                                         </div>
                                     </div>
