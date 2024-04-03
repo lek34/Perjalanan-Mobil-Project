@@ -28,30 +28,35 @@
                                         <div class="col-md-4">
                                             <label class="fs-6 fw-bold form-label">Tanggal :</label>
                                             <div class="input-group date">
-                                                <input type="date" class="form-control" value="{{old('tanggal') ?? ''}}"
-                                                    placeholder="Select date" id="tanggal" name="tanggal">
+                                                <input type="date" class="form-control"
+                                                    value="{{ old('tanggal') ?? date('Y-m-d') }}" placeholder="Select date"
+                                                    id="tanggal" name="tanggal">
                                             </div>
                                             <x-forms.input-error name="tanggal" />
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nomor
-                                                Rekening</label>
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Kebun</label>
                                             <div class="mb-5">
-                                                <input type="text" name="norek" id="norek"
-                                                    class="form-control form-control-solid" placeholder="Nomor Rekening" value="{{old('norek') ?? ''}}">
-                                                <x-forms.input-error name="norek" />
+                                                <input type="text" name="kebun" id="kebun"
+                                                    class="form-control form-control-solid" placeholder="Nomor Rekening"
+                                                    value="{{ old('kebun') ?? 'SIBISA MANGATUR' }}">
+                                                <x-forms.input-error name="kebun" />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="fs-6 fw-bold form-label">Nomor Bon :</label>
-                                            <div class="input-group date">
-                                                <input type="text" name="nobon" id="nobon"
-                                                    class="form-control form-control-solid" placeholder="Nomor Bon" value="{{old('nobon') ?? ''}}">
-                                                <x-forms.input-error name="nobon" />
-                                            </div>
-                                            <x-forms.input-error name="nobon" />
-
+                                            <label class="fs-6 fw-bold form-label">Status Mobil</label>
+                                            <select class="form-select mb-2 select2-hidden-accessible" id="nama"
+                                                data-control="select2" data-hide-search=""
+                                                data-placeholder="Select an option" tabindex="-1" aria-hidden="true">
+                                                <option value="1" {{ old('status_mobil') == '1' ? 'selected' : '' }}>
+                                                    POOL</option>
+                                                <option value="2" {{ old('status_mobil') == '2' ? 'selected' : '' }}>
+                                                    AFD</option>
+                                                <option value="3" {{ old('status_mobil') == '3' ? 'selected' : '' }}>
+                                                    NON KEBUN</option>
+                                            </select>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="separator separator-dashed my-10"></div>
@@ -59,16 +64,20 @@
                                     <div class="row gx-10 mb-5">
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Armada</label>
-                                            <select class="form-select mb-2 select2" id="armada_id" name="armada_id">
-                                                <option value="{{ $armada->id }}">{{ $armada->nopol }}</option>
-                                            </select>
-                                            <x-forms.input-error name="armada_id" />
+
+                                            <input type="text" name="namamekanik" id="namamekanik"
+                                                class="form-control form-control-solid" value="{{ $armada->nopol }}"
+                                                placeholder="Nama Mekanik" readonly>
+                                            <x-forms.input-error name="namamekanik" />
+
+
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nama Mekanik</label>
                                             <div class="mb-5">
                                                 <input type="text" name="namamekanik" id="namamekanik"
-                                                    class="form-control form-control-solid" value="{{old('namamekanik') ?? ''}}" placeholder="Nama Mekanik">
+                                                    class="form-control form-control-solid"
+                                                    value="{{ old('namamekanik') ?? '' }}" placeholder="Nama Mekanik">
                                                 <x-forms.input-error name="namamekanik" />
                                             </div>
                                         </div>
@@ -108,46 +117,56 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <td class="pe-7">
-                                                    <select class="form-select mb-2 select2-hidden-accessible"
-                                                        id="nama" data-control="select2" data-hide-search=""
-                                                        data-placeholder="Select an option" tabindex="-1"
-                                                        aria-hidden="true" on="resetSelect()">
-                                                        <option disabled selected value>-- Pilih Barang--</option>
-                                                        <option value="1">Barang 1</option>
-                                                        <option value="2">Barang 2</option>
-                                                        <option value="3">Barang 3</option>
-                                                        <option value="4">Barang 4</option>
-                                                        <option value="5">Jasa</option>
-                                                    </select>
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="asal"
-                                                        type="text" name="asal" placeholder="Asal" value="">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="qty"
-                                                        type="number" name="qty" placeholder="Qty" value="">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="uom"
-                                                        type="text" name="uom" placeholder="Satuan"
-                                                        value="">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="harga"
-                                                        type="text" name="harga" placeholder="Harga"
-                                                        value="">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" id="total_harga"
-                                                        type="text" name="total_harga" placeholder="Total Harga"
-                                                        value="0" readonly>
-                                                </td>
-                                                <td class="ps-0">
-                                                    <button type="button" class="btn btn-success"
-                                                        onclick="addRow()">Tambah</button>
-                                                </td>
+                                                <tr>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="pe-7">
+                                                        <select class="form-select mb-2 select2-hidden-accessible"
+                                                            id="nama" data-control="select2" data-hide-search=""
+                                                            data-placeholder="Select an option" tabindex="-1"
+                                                            aria-hidden="true" on="resetSelect()">
+                                                            <option disabled selected value>-- Pilih Barang--</option>
+                                                            <option value="1">Barang 1</option>
+                                                            <option value="2">Barang 2</option>
+                                                            <option value="3">Barang 3</option>
+                                                            <option value="4">Barang 4</option>
+                                                            <option value="5">Jasa</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="ps-0">
+                                                        <input class="form-control form-control-solid" id="asal"
+                                                            type="text" name="asal" placeholder="Asal"
+                                                            value="">
+                                                    </td>
+
+                                                    <td class="ps-0">
+                                                        <input class="form-control form-control-solid" id="qty"
+                                                            type="text" name="qty" placeholder="Qty">
+                                                    </td>
+
+
+                                                    <td class="ps-0">
+                                                        <input class="form-control form-control-solid" id="uom"
+                                                            type="text" name="uom" placeholder="Satuan"
+                                                            value="">
+                                                    </td>
+                                                    <td class="ps-0">
+                                                        <input class="form-control form-control-solid" id="harga"
+                                                            type="text" name="harga" placeholder="Harga" value="0">
+                                                    </td>
+                                                    <td class="ps-0">
+                                                        <input class="form-control form-control-solid" id="total_harga"
+                                                            type="text" name="total_harga" placeholder="Total Harga"
+                                                            value="0" readonly>
+                                                    </td>
+                                                    <td class="ps-0">
+                                                        <button type="button" class="btn btn-success"
+                                                            onclick="addRow()">Tambah</button>
+                                                    </td>
+                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -179,7 +198,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Keterangan</label>
                                             <div class="form-group mb-1">
-                                                <textarea class="form-control form-control-solid" rows="5" name="keterangan">{{old('keterangan') ?? ''}}</textarea>
+                                                <textarea class="form-control form-control-solid" rows="5" name="keterangan">{{ old('keterangan') ?? '' }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -224,6 +243,11 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    window.onload = function() {
+        refetch();
+        updateTotals();
+        setTodayAsDefaultValue();
+    };
     $(document).ready(function() {
         // const data = [];
 
@@ -356,11 +380,13 @@
     }
 
 
-    window.onload = function() {
-        refetch();
-        updateTotals();
-    };
 
+    function setTodayAsDefaultValue() {
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+        // Set the input value to today's date
+        document.getElementById("tanggal").value = today;
+    }
 
     function addRow() {
         // const data = [];
@@ -411,7 +437,7 @@
 
         var status = document.getElementById("status").value
 
-        if(status === "N"){
+        if (status === "N") {
             $("#nama").val(null).trigger("change");
             nama.value = "2"
             asal.value = "-";
@@ -419,7 +445,7 @@
             uom.value = "-";
             harga.value = "0";
             total_harga.value = "0";
-        }else{
+        } else {
             $("#nama").val(null).trigger("change");
             asal.value = "";
             qty.value = "";
@@ -532,4 +558,19 @@
             console.error("Element with ID 'nama' not found.");
         }
     }
+
+    function restrictToNumbers(inputField) {
+        inputField.addEventListener("input", function(event) {
+            var value = event.target.value;
+            var newValue = value.replace(/\D/g, ''); // Remove non-numeric characters
+            event.target.value = newValue; // Set the input value to the cleaned value
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var qtyInput = document.getElementById("qty");
+        var hargaInput = document.getElementById("harga");
+        restrictToNumbers(qtyInput);
+        restrictToNumbers(hargaInput); // Apply the restriction on page load
+    });
 </script>
