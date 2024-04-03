@@ -1,13 +1,16 @@
 <?php
 
+use App\Models\Satuan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Master\ArmadaController;
+use App\Http\Controllers\Admin\Master\SatuanController;
+use App\Http\Controllers\Admin\Master\RekeningController;
 use App\Http\Controllers\Admin\Master\SparepartController;
-use App\Http\Controllers\Admin\Transaksi\PemakaianSparepartController;
 use App\Http\Controllers\Admin\Transaksi\PembelianController;
-use App\Http\Controllers\Admin\Transaksi\PerjalananController;
 use App\Http\Controllers\Admin\Transaksi\TransaksiController;
+use App\Http\Controllers\Admin\Transaksi\PerjalananController;
+use App\Http\Controllers\Admin\Transaksi\PemakaianSparepartController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -35,6 +38,28 @@ Route::controller(ArmadaController::class)->middleware('auth')->prefix('admin/ma
 });
 
 Route::controller(SparepartController::class)->middleware('auth')->prefix('admin/master/sparepart')->name('admin.master.sparepart.')->group(function(){
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/show/{id}','show')->name('show');
+    Route::get('/edit/{id}','edit')->name('edit');
+    Route::put('/update/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
+});
+
+Route::controller(RekeningController::class)->middleware('auth')->prefix('admin/master/rekening')->name('admin.master.rekening.')->group(function(){
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/show/{id}','show')->name('show');
+    Route::get('/edit/{id}','edit')->name('edit');
+    Route::put('/update/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
+});
+
+Route::controller(SatuanController::class)->middleware('auth')->prefix('admin/master/satuan')->name('admin.master.satuan.')->group(function(){
     Route::get('/index', 'index')->name('index');
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
