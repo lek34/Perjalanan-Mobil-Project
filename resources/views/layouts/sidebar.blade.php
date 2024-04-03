@@ -83,6 +83,24 @@
                             </a>
                         </div>
 
+                        <div class="menu-item">
+                            <a class="menu-link {{!empty($rekening_menu) ? $rekening_menu : ''}}" href="{{ route('admin.master.rekening.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Rekening</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link {{!empty($satuan_menu) ? $satuan_menu : ''}}" href="{{ route('admin.master.satuan.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Satuan</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
 
