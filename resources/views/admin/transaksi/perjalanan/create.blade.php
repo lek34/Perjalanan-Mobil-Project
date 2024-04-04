@@ -110,13 +110,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="pe-0">
+                                                    <td class="pe-2">
                                                         <div class="input-group mb-3">
                                                             <input type="time" class="form-control" id="jam_mulai"
                                                                 name="jam_mulai">
                                                         </div>
                                                     </td>
-                                                    <td class="pe-0">
+                                                    <td class="pe-2">
                                                         <div class="input-group mb-3">
                                                             <input type="time" class="form-control" id="jam_selesai"
                                                                 name="jam_selesai">
@@ -180,8 +180,18 @@
                                                             value="" readonly>
                                                     </td>
                                                     <td class="ps-0">
-                                                        <input class="form-control" id="satuan" type="text"
-                                                            name="satuan" placeholder="Satuan" value="">
+                                                        <select class="form-select mb-2 select2-hidden-accessible"
+                                                            id="satuan" data-control="select2"
+                                                            data-hide-search="" data-placeholder="Pilih Satuan"
+                                                            tabindex="-1" aria-hidden="true" on="resetSelect()">
+                                                            <option disabled selected value> </option>
+                                                            <option value="1">Ton</option>
+                                                            <option value="2">Orang</option>
+                                                            <option value="3">Kg</option>
+                                                            <option value="4">Buah</option>
+                                                            <option value="5">Jam</option>
+                                                        </select>
+                                                        
                                                     </td>
                                                     <td class="ps-0">
                                                         <input class="form-control" id="jumlah_produksi" type="text"
@@ -256,6 +266,25 @@
                                         <!--begin::Button-->
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <!--end::Button-->
+                                    </div>
+                                    <div class="modal fade" id="errorMessageModal" tabindex="-1"
+                                        aria-labelledby="errorMessageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="errorMessageModalLabel">Error Message</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p id="errorMessageText"></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -445,6 +474,28 @@
         var harga = document.getElementById("harga");
         var total_harga = document.getElementById("total_harga");
 
+        var nomor_rekening_v = document.getElementById("nomor_rekening").value.trim();
+        var asal_lokasi_v = document.getElementById("asal_lokasi").value.trim();
+        var tujuan_lokasi_v = document.getElementById("tujuan_lokasi").value.trim();
+        var jam_mulai_v = document.getElementById("jam_mulai").value.trim();
+        var jam_selesai_v = document.getElementById("jam_selesai").value.trim();
+        var jarak_mulai_v = document.getElementById("jarak_mulai").value.trim();
+        var jarak_selesai_v = document.getElementById("jarak_selesai").value.trim();
+        var satuan_v = document.getElementById("satuan").value.trim();
+        var jumlah_produksi_v = document.getElementById("jumlah_produksi").value.trim();
+
+        // Check if all required fields are not empty
+        if (nomor_rekening_v === '' || asal_lokasi_v === '' || tujuan_lokasi_v === '' || jam_mulai_v === '' ||
+            jam_selesai_v === '' || jarak_mulai_v === '' || jarak_selesai_v === '' || satuan_v === '' ||
+            jumlah_produksi_v === '') {
+            var errorMessageText = "Harap isi semua field   ";
+            document.getElementById("errorMessageText").textContent = errorMessageText;
+            var errorMessageModal = new bootstrap.Modal(document.getElementById('errorMessageModal'), {
+                keyboard: false
+            });
+            errorMessageModal.show();
+            return;
+        }
 
         // Create a new row in the table
         var table = document.getElementById("itemTable");
@@ -491,36 +542,19 @@
         cell2.innerHTML = jarak_mulai.value;
         cell3.innerHTML = jarak_selesai.value;
         cell4.innerHTML = total_jarak.value;
-        cell5.innerHTML = satuan.value;
+        cell5.innerHTML = satuan.options[satuan.selectedIndex].text;
         cell6.innerHTML = jumlah_produksi.value;
         cell7.innerHTML =
             '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
 
         // Clear input fields after adding a row
-
-
-        var status = document.getElementById("status").value
-
-        if (status === "N") {
-            $("#nama").val(null).trigger("change");
-            nama.value = "2"
-            asal.value = "-";
-            qty.value = "0";
-            uom.value = "-";
-            harga.value = "0";
-            total_harga.value = "0";
-        } else {
-            $("#nama").val(null).trigger("change");
-            asal.value = "";
-            qty.value = "";
-            uom.value = "";
-            harga.value = "";
-            total_harga.value = "";
-        }
-
+        $("#asal_lokasi").val(null).trigger("change");
+        $("#tujuan_lokasi").val(null).trigger("change");
+        $("#nomor_rekening").val(null).trigger("change");
+        jam_mulai.value = "";
+        jam_selesai.value = "";
 
         // Call pushItemToArray to get the table data as an array of objects
-
         var tableDataArray = pushItemToArray();
 
         // Convert the array of objects to a JSON string
@@ -529,7 +563,6 @@
         // Set the JSON string as the value of the hidden input field
         document.getElementById("tableData").value = jsonDataString;
 
-        updateTotals();
     }
 
 
@@ -552,20 +585,20 @@
     }
 
     function deleteRow(btn) {
-    // Get the current row
-    var row = btn.parentNode.parentNode;
-    var rowIndex = row.rowIndex;
+        // Get the current row
+        var row = btn.parentNode.parentNode;
+        var rowIndex = row.rowIndex;
 
-    // Check if there's a previous row, then delete it along with the current row
-    if (rowIndex > 1) {
-        var table = row.parentNode;
-        table.deleteRow(rowIndex); // Delete the current row
-        table.deleteRow(rowIndex - 1); // Delete the row before the current row
+        // Check if there's a previous row, then delete it along with the current row
+        if (rowIndex > 1) {
+            var table = row.parentNode;
+            table.deleteRow(rowIndex); // Delete the current row
+            table.deleteRow(rowIndex - 1); // Delete the row before the current row
+        }
+
+        // Update any totals or calculations after deleting rows
+        updateTotals();
     }
-
-    // Update any totals or calculations after deleting rows
-    updateTotals();
-}
 
 
 
