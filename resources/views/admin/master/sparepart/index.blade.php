@@ -100,14 +100,10 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-100px">No</th>
+                                <th class="min-w-125px">Kode Barang</th>
                                 <th class="min-w-125px">Nama</th>
-                                <th class="min-w-125px">No Part</th>
-                                <th class="min-w-125px">Alias</th>
-                                <th class="min-w-125px">Qty Besar</th>
-                                <th class="min-w-125px">Uom Besar</th>
-                                <th class="min-w-125px">Qty Kecil</th>
-                                <th class="min-w-125px">Uom Kecil</th>
-                                <th class="min-w-125px">Stock</th>
+                                <th class="min-w-125px">Satuan</th>
+                                <th class="min-w-125px">Kode Rekening</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
                             </tr>
@@ -123,28 +119,16 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ $sparepart->kode_barang }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
                                         {{ $sparepart->nama }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->partnumber }}
+                                        {{ $sparepart->satuan }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->alias }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->qtybesar }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->uombesar }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->qtykecil }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->uomkecil }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $sparepart->stock ?? 0 }}
+                                        {{ $sparepart->rekening->nama_rekening }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
@@ -213,6 +197,13 @@
                         <!--end::Table body-->
                     </table>
                     <!--end::Table-->
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <!--begin::Pages-->
+                            {{ $spareparts->links() }}
+                            <!--end::Pages-->
+                        </div>
+                    </div>
                 </div>
                 <!--end::Card body-->
             </div>
