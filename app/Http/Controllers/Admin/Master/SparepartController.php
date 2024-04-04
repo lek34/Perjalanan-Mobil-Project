@@ -16,7 +16,8 @@ class SparepartController extends Controller
     public function index()
     {
         //
-        $spareparts = Sparepart::withTrashed()->get();
+        // $spareparts = Sparepart::withTrashed()->get();
+        $spareparts = Sparepart::withTrashed()->paginate(10);
         $master_acc = 'here show';
         $sparepart_menu = 'active';
         return view('admin.master.sparepart.index',compact('spareparts','master_acc','sparepart_menu'));
