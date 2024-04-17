@@ -103,12 +103,22 @@
                                         :value=" old('norangka') !== null ? old('norangka') : '' " />
                                     <x-forms.input-error name="norangka" />
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <!-- Input 7 -->
                                     <x-forms.input id="bbm" label="BBM" :required="'required'" name="bbm"
                                         type="text" placeholder="Masukkan bbm..." :func="''" :isiFunc="''"
                                         :value="old('bbm') !== null ? old('bbm') : ''" />
                                     <x-forms.input-error name="bbm" />
+                                </div> --}}
+                                <div class="col-md-4">
+                                    <label class="fs-6 fw-bold form-label mt-3"> <span class="required">Merk</span></label>
+                                    <select class="form-select mb-2 " data-control="select2" data-hide-search="true"
+                                        data-placeholder="Select an option" name="bbm" required>
+                                        <option disabled selected>--Pilih Jenis BBM--</option>
+                                        <option value="Solar" {{old('bbm') == "Solar" ? 'selected' : ''}}>Solar</option>
+                                        <option value="Bensin" {{old('bbm') == "Bensin" ? 'selected' : ''}}>Bensin</option>
+                                    </select>
+                                    <x-forms.input-error name="merk" />
                                 </div>
                             </div>
                             <!-- Row 3 -->
@@ -131,8 +141,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <!-- Input 5 -->
-                                    <x-forms.input id="tipe" label="Nomor Rangka" :required="'required'" name="tipe"
-                                        type="text" placeholder="Masukkan rangka..." :func="''" :isiFunc="''"
+                                    <x-forms.input id="tipe" label="Tipe Mobil" :required="'required'" name="tipe"
+                                        type="text" placeholder="Masukkan tipe..." :func="''" :isiFunc="''"
                                         :value=" old('tipe') !== null ? old('tipe') : '' " />
                                     <x-forms.input-error name="tipe" />
                                 </div>
