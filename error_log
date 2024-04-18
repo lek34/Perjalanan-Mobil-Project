@@ -1,0 +1,15 @@
+[18-Apr-2024 10:23:52 Asia/Jakarta] PHP Warning:  require(/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php): Failed to open stream: No such file or directory in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
+[18-Apr-2024 10:23:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /DATA/gpasolu1/trp.gpasolution.id/artisan:9
+Stack trace:
+#0 {main}
+  thrown in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
+[18-Apr-2024 10:23:59 Asia/Jakarta] PHP Warning:  require(/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php): Failed to open stream: No such file or directory in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
+[18-Apr-2024 10:23:59 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /DATA/gpasolu1/trp.gpasolution.id/artisan:9
+Stack trace:
+#0 {main}
+  thrown in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
+[18-Apr-2024 10:24:04 Asia/Jakarta] PHP Warning:  require(/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php): Failed to open stream: No such file or directory in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
+[18-Apr-2024 10:24:04 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/DATA/gpasolu1/trp.gpasolution.id/vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /DATA/gpasolu1/trp.gpasolution.id/artisan:9
+Stack trace:
+#0 {main}
+  thrown in /DATA/gpasolu1/trp.gpasolution.id/artisan on line 9
