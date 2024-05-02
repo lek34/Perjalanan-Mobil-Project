@@ -19,7 +19,65 @@
             <div class="d-flex flex-column flex-lg-row">
                 <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
                     <div class="card">
-                        <div class="card-body p-12">
+                        <div class="card-body p-12" id="form1">
+                            <!-- Form 1 -->
+                            <form id="stepForm1">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <div>
+                                        <button onclick="nextStep(event)" class="btn btn-light ml-2" type="button">
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Input Group with Three Columns -->
+                                <div class="row mt-3" id="inputGroup">
+                                    <div class="col">
+
+                                        <div class="mb-5">
+                                            <input type="text" name="namaMekanik"
+                                                id="namaMekanik"class="form-control form-control-solid"
+                                                placeholder="Nama Mekanik">
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="mb-5">
+                                            <input type="text" name="jamKerja"
+                                                id="jamKerja"class="form-control form-control-solid"
+                                                placeholder="Jam Kerja">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-primary" onclick="addDataToTable(event)">Tambah</button>
+                                    </div>
+
+                                </div>
+
+                                <!-- Table to Display Added Data -->
+                                <div class="mt-3">
+                                    <button class="btn btn-primary" onclick="convertToJSON(event)">Convert to
+                                        JSON</button>
+
+                                    <table class="table" id="mekanikTable">
+                                        <thead class="table-header">
+                                            <tr>
+                                                <th class="fs-4 fw-bold">No.</th>
+                                                <th class="fs-4 fw-bold">Nama Mekanik</th>
+                                                <th class="fs-4 fw-bold">Jam Kerja</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="text-end border-bottom border-bottom-dashed"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tableBody" class="table-body">
+                                            <!-- Data will be added dynamically here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-body p-12" id="form2" style="display: none;">
                             <form action="{{ route('admin.transaksi.pemakaian.store') }}" method="POST" id="form">
                                 @csrf
                                 <input type="hidden" name="tableData" id="tableData" value="{{ old('tableData') ?? '' }}">
@@ -28,8 +86,9 @@
                                         <div class="col-md-4">
                                             <label class="fs-6 fw-bold form-label">Tanggal :</label>
                                             <div class="input-group date">
-                                                <input type="date" class="form-control" value="{{old('tanggal') ?? ''}}"
-                                                    placeholder="Select date" id="tanggal" name="tanggal">
+                                                <input type="date" class="form-control"
+                                                    value="{{ old('tanggal') ?? '' }}" placeholder="Select date"
+                                                    id="tanggal" name="tanggal">
                                             </div>
                                             <x-forms.input-error name="tanggal" />
                                         </div>
@@ -38,7 +97,8 @@
                                                 Rekening</label>
                                             <div class="mb-5">
                                                 <input type="text" name="norek" id="norek"
-                                                    class="form-control form-control-solid" placeholder="Nomor Rekening" value="{{old('norek') ?? ''}}">
+                                                    class="form-control form-control-solid" placeholder="Nomor Rekening"
+                                                    value="{{ old('norek') ?? '' }}">
                                                 <x-forms.input-error name="norek" />
                                             </div>
                                         </div>
@@ -46,7 +106,8 @@
                                             <label class="fs-6 fw-bold form-label">Nomor Bon :</label>
                                             <div class="input-group date">
                                                 <input type="text" name="nobon" id="nobon"
-                                                    class="form-control form-control-solid" placeholder="Nomor Bon" value="{{old('nobon') ?? ''}}">
+                                                    class="form-control form-control-solid" placeholder="Nomor Bon"
+                                                    value="{{ old('nobon') ?? '' }}">
                                                 <x-forms.input-error name="nobon" />
                                             </div>
                                             <x-forms.input-error name="nobon" />
@@ -65,12 +126,8 @@
                                             <x-forms.input-error name="armada_id" />
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Nama Mekanik</label>
-                                            <div class="mb-5">
-                                                <input type="text" name="namamekanik" id="namamekanik"
-                                                    class="form-control form-control-solid" value="{{old('namamekanik') ?? ''}}" placeholder="Nama Mekanik">
-                                                <x-forms.input-error name="namamekanik" />
-                                            </div>
+                                            <button class="btn btn-primary" onclick="convertToJSON(event)">Convert to
+                                                JSON</button>
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Pemakaian Sparepart
@@ -152,7 +209,7 @@
                                         </table>
                                     </div>
                                     <div class="table-responsive mb-10" id="hidden_div2">
-                                        <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="itemTable">
+                                        <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="sparepartTable">
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
                                                     <th style="display: none;">id</th>
@@ -168,30 +225,19 @@
                                             <tbody>
 
                                             </tbody>
-
-                                            <tfoot>
-
-                                            </tfoot>
-
                                         </table>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Keterangan</label>
                                             <div class="form-group mb-1">
-                                                <textarea class="form-control form-control-solid" rows="5" name="keterangan">{{old('keterangan') ?? ''}}</textarea>
+                                                <textarea class="form-control form-control-solid" rows="5" name="keterangan">{{ old('keterangan') ?? '' }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
 
                                         </div>
                                         <div class="col-md-4">
-                                            {{-- <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
-                                            <div class="mb-5">
-                                                <input class="form-control form-control-solid" id="subtotal"
-                                                    type="text" name="subtotal" placeholder="Rp 0.00" value=""
-                                                    readonly>
-                                            </div> --}}
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Jumlah Rupiah
                                                 Terpakai</label>
                                             <div class="mb-5">
@@ -205,14 +251,19 @@
 
                                     <div class="separator separator-dashed my-10"></div>
                                     <!--begin::Action buttons-->
-                                    <div class="d-flex justify-content-end">
-                                        <!--begin::Button-->
-                                        <button class="btn btn-light me-3"><a href="">Cancel</a></button>
-                                        <!--end::Button-->
-                                        <!--begin::Button-->
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                        <!--end::Button-->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <!-- "Previous" button -->
+                                        <button onclick="prevStep(event)" class="btn btn-light">
+                                            <i class="bi bi-arrow-left"></i> <!-- Bootstrap backward arrow icon -->
+                                        </button>
+
+                                        <!-- Buttons on the right -->
+                                        <div>
+                                            <button class="btn btn-light me-3"><a href="">Cancel</a></button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                                     </div>
+
                                 </div>
                             </form>
                         </div>
@@ -224,91 +275,190 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
-        // const data = [];
+    let currentStep = 1;
+    var jsonData = {};
 
-        function maskingNumber() {
-            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
-            $('#harga').val(formatNumber(totalharga));
+    function addRow(event) {
+        event.preventDefault();
+        var nama = document.getElementById("nama");
+        var asal = document.getElementById("asal");
+        var qty = document.getElementById("qty");
+        var uom = document.getElementById("uom");
+        var harga = document.getElementById("harga");
+        var total_harga = document.getElementById("total_harga");
+
+        var table = document.getElementById("sparepartTable");
+        var row = table.insertRow();
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+
+        // Set the cell values
+        cell0.innerHTML = nama.options[nama.selectedIndex].value;
+        cell0.style.display = 'none'
+        cell1.innerHTML = nama.options[nama.selectedIndex].text;
+        cell2.innerHTML = asal.value;
+        cell3.innerHTML = qty.value;
+        cell4.innerHTML = uom.value;
+        cell5.innerHTML = 'Rp. ' + harga.value;
+        cell6.innerHTML = 'Rp. ' + total_harga.value;
+        cell7.innerHTML =
+            '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
+
+    }
+
+    function addDataToTable(event) {
+        event.preventDefault();
+
+        var namaMekanik = document.getElementById("namaMekanik").value;
+        var jamKerja = document.getElementById("jamKerja").value;
+
+        var tableBody = document.getElementById("tableBody");
+        var newRow = tableBody.insertRow();
+
+        var cell0 = newRow.insertCell(0); // Index number cell
+        var cell1 = newRow.insertCell(1); // Nama Mekanik cell
+        var cell2 = newRow.insertCell(2); // Jam Kerja cell
+        var cell3 = newRow.insertCell(3); // Delete button cell
+
+        var rowIndex = tableBody.rows.length; // Calculate the index number
+
+        cell0.innerHTML = rowIndex;
+        cell1.innerHTML = namaMekanik;
+        cell2.innerHTML = jamKerja;
+        cell3.innerHTML =
+            '<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>'; // Add delete button
+
+        // Clear input fields after adding data to the table
+        document.getElementById("namaMekanik").value = "";
+        document.getElementById("jamKerja").value = "";
+    }
+
+    function mekanikTableDataToJSON() {
+        var tableRows = document.getElementById("mekanikTable").getElementsByTagName("tbody")[0].getElementsByTagName(
+            "tr");
+        var mekanikData = [];
+
+        for (var i = 0; i < tableRows.length; i++) {
+            var row = tableRows[i];
+            var rowData = {
+                "index": row.cells[0].innerHTML,
+                "namaMekanik": row.cells[1].innerHTML,
+                "jamKerja": row.cells[2].innerHTML
+            };
+            mekanikData.push(rowData);
         }
 
+        return mekanikData;
+    }
+
+    function sparepartTableDataToJSON() {
+        var tableRows = document.getElementById("sparepartTable").getElementsByTagName("tbody")[0].getElementsByTagName(
+            "tr");
+        var sparepartData = [];
+
+        for (var i = 0; i < tableRows.length; i++) {
+            var row = tableRows[i];
+            var nama = row.cells[0].innerHTML;
+            var namaText = row.cells[1].innerHTML;
+            var asal = row.cells[2].innerHTML;
+            var qty = row.cells[3].innerHTML;
+            var uom = row.cells[4].innerHTML;
+            var harga = row.cells[5].innerHTML;
+            var total_harga = row.cells[6].innerHTML;
+
+            var rowData = {
+                "nama": nama,
+                "namaText": namaText,
+                "asal": asal,
+                "qty": qty,
+                "uom": uom,
+                "harga": harga,
+                "total_harga": total_harga
+            };
+            sparepartData.push(rowData);
+        }
+
+        return sparepartData;
+    }
+
+    function convertToJSON(event) {
+        event.preventDefault();
+        jsonData.data = [];
+
+        jsonData.data.push({
+            "mekanik": mekanikTableDataToJSON()
+        });
+        jsonData.data.push({
+            "sparepart": sparepartTableDataToJSON()
+        });
+
+        console.log(jsonData);
+    }
+
+    function nextStep(event) {
+        event.preventDefault(); // Prevent form submission
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById('form2').style.display = 'block';
+        currentStep = 2;
+    }
+
+    function prevStep() {
+        event.preventDefault();
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('form1').style.display = 'block';
+        currentStep = 1;
+    }
+
+    window.onload = function() {
+        refetch();
+        updateTotals();
+    };
+
+    $(document).ready(function() {
+        // Function to format number with Indonesian currency style
         function formatNumber(number) {
             return number.toLocaleString('id-ID', {
                 maximumFractionDigits: 2
             });
         }
 
+        // Function to calculate total and update total harga
         function calculateTotal() {
-
             var harga = parseFloat($('#harga').val().replaceAll('.', '') || 0);
             var qty = parseFloat($('#qty').val() || 0);
-
-
-
-            // Calculate subtotal
             var total_harga = qty * harga;
             $('#total_harga').val(formatNumber(total_harga));
-
         }
 
+        // Event listeners for input fields
         $('#harga, #qty').on('input', function() {
             calculateTotal();
         });
+
+        // Masking number input
         $('#harga').on('input', function() {
-            maskingNumber();
+            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
+            $('#harga').val(formatNumber(totalharga));
         });
+
+        // Form submission event listener
         $('#form').on('submit', function() {
-            const data = getTableData();
+            const data = pushItemToArray();
             console.log(data);
         });
     });
-
 
     function extractNumericValue(value) {
         // Extract numeric value from a string (assuming 'Rp. xxx' format)
         return parseFloat(value.replace('Rp ', '').replace(',', ''));
     }
 
-
-    // function getTableData() {
-    //     // document.getElementById("tableData").value = tableToJSON();
-    //     // console.log(tableToJSON(document.getElementById('itemTable')))
-    //     document.getElementById("tableData").value = formatTableToJson(document.getElementById('itemTable'))
-    //     console.log(formatTableToJson(document.getElementById('itemTable')))
-    // }
-
-
-    function pushItemToArray() {
-        var table = document.getElementById("itemTable");
-        var dataArray = [];
-
-        // Iterate over rows in the table
-        for (var i = 1; i < table.rows.length; i++) {
-            var row = table.rows[i];
-            var rowData = {};
-
-            // Iterate over cells in the row
-            for (var j = 0; j < row.cells.length - 1; j++) { // Exclude the last cell containing the delete button
-                var cell = row.cells[j];
-                var cellText = cell.textContent.trim(); // Get the trimmed text content of the cell
-                var columnHeader = table.rows[0].cells[j].textContent.trim(); // Get the corresponding header text
-
-                // If the cell is in column 5 or 6, trim any word and periods
-                if (j === 5 || j === 6) {
-                    cellText = cellText.replace(/Rp|\./g, "");
-                }
-
-                // Add the cell value to the rowData object with the header as key
-                rowData[columnHeader] = cellText;
-            }
-
-            // Push rowData object to the dataArray
-            dataArray.push(rowData);
-
-        }
-        console.log(dataArray);
-        return dataArray;
-    }
 
     function refetch() {
         // Data JSON dari variabel atau sumber data lainnya
@@ -355,94 +505,6 @@
         // console.log(document.getElementById("tableData").value)
     }
 
-
-    window.onload = function() {
-        refetch();
-        updateTotals();
-    };
-
-
-    function addRow() {
-        // const data = [];
-        // Get values from the input fields
-        var nama = document.getElementById("nama");
-        var asal = document.getElementById("asal");
-        var qty = document.getElementById("qty");
-        var uom = document.getElementById("uom");
-        var harga = document.getElementById("harga");
-        var total_harga = document.getElementById("total_harga");
-
-
-        // Create a new row in the table
-        var table = document.getElementById("itemTable");
-        var row = table.insertRow(table.rows.length);
-        var cell0 = row.insertCell(0);
-        var cell1 = row.insertCell(1);
-        var cell2 = row.insertCell(2);
-        var cell3 = row.insertCell(3);
-        var cell4 = row.insertCell(4);
-        var cell5 = row.insertCell(5);
-        var cell6 = row.insertCell(6);
-        var cell7 = row.insertCell(7);
-
-        // Disable the input fields after adding an item
-        // document.getElementById("id_supplier").value = document.getElementById('id_supp').value
-        // document.getElementById("tanggal").readOnly = true;
-
-        // document.getElementById("id_supp").disabled = true;
-        // document.getElementById("jatuh_tempo").readOnly = true;
-        // Get existing table data (if any)
-
-        // Set the cell values
-        cell0.innerHTML = nama.options[nama.selectedIndex].value;
-        cell0.style.display = 'none'
-        cell1.innerHTML = nama.options[nama.selectedIndex].text;
-        // cell2.innerHTML =  '<span class="clickable" onclick="fetchHistoryPembelian('+barang.options[barang.selectedIndex].value+')">' + barang.options[barang.selectedIndex].text + '</span>';
-        cell2.innerHTML = asal.value;
-        cell3.innerHTML = qty.value;
-        cell4.innerHTML = uom.value;
-        cell5.innerHTML = 'Rp. ' + harga.value;
-        cell6.innerHTML = 'Rp. ' + total_harga.value;
-        cell7.innerHTML =
-            '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
-
-        // Clear input fields after adding a row
-
-
-        var status = document.getElementById("status").value
-
-        if(status === "N"){
-            $("#nama").val(null).trigger("change");
-            nama.value = "2"
-            asal.value = "-";
-            qty.value = "0";
-            uom.value = "-";
-            harga.value = "0";
-            total_harga.value = "0";
-        }else{
-            $("#nama").val(null).trigger("change");
-            asal.value = "";
-            qty.value = "";
-            uom.value = "";
-            harga.value = "";
-            total_harga.value = "";
-        }
-
-
-        // Call pushItemToArray to get the table data as an array of objects
-
-        var tableDataArray = pushItemToArray();
-
-        // Convert the array of objects to a JSON string
-        var jsonDataString = JSON.stringify(tableDataArray);
-
-        // Set the JSON string as the value of the hidden input field
-        document.getElementById("tableData").value = jsonDataString;
-
-        updateTotals();
-    }
-
-
     function deleteOldRow(btn) {
 
         var dataIndex = btn.parentNode.getAttribute("data-index"); // Get the custom data-index attribute value
@@ -462,13 +524,9 @@
     }
 
     function deleteRow(btn) {
-        // Delete the row from the table
         var row = btn.parentNode.parentNode;
-
         row.parentNode.removeChild(row);
-
         updateTotals();
-
     }
 
     function formatNumber(number) {
@@ -478,27 +536,17 @@
     }
 
     function updateTotals() {
-        // Update totals
         var table = document.getElementById("itemTable");
-        // var subTotal = 0;
         var totalHarga = 0;
 
         for (var i = 0, row; row = table.rows[i]; i++) {
-            // console.log(row.cells[5].innerText.substring(3).replaceAll('.', ''));
-            // Skip the header row
             if (i === 0) {
                 continue;
             }
-
-            // var sub = parseFloat(row.cells[5].innerText.substring(3).replaceAll('.', ''));
             var harga = parseFloat(row.cells[6].innerText.substring(3).replaceAll('.', ''));
-
-            // subTotal += sub;
             totalHarga += harga;
         }
 
-        // Display totals
-        // document.getElementById("subtotal").value = 'Rp ' + formatNumber(subTotal);
         document.getElementById("total").value = 'Rp ' + formatNumber(totalHarga);
     }
 
